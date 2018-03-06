@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate{
+class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UITextFieldDelegate{
  
     
     
@@ -18,6 +18,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet var markButton: UIButton!
     @IBOutlet var menuButton: UIButton!
     @IBOutlet var locationButton: UIButton!
+    @IBOutlet var saveButton: UIButton!
+    @IBOutlet var cancelButton: UIButton!
+    @IBOutlet var markCreateView: UIView!
+    @IBOutlet var markTitleTextField: UITextField!
     
     var mapView: MKMapView!
     var locationManager: CLLocationManager!
@@ -31,18 +35,26 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        let borderWidth : CGFloat = 0.75
+        let borderColor = UIColor.lightGray.cgColor
+        
         markButton.layer.cornerRadius = markButton.bounds.height/2.0
         markButton.layer.masksToBounds = true
-        markButton.layer.borderWidth = 1
-        markButton.layer.borderColor = UIColor.darkGray.cgColor
+        markButton.layer.borderWidth = borderWidth
+        markButton.layer.borderColor = borderColor
         menuButton.layer.cornerRadius = menuButton.bounds.height/2.0
         menuButton.layer.masksToBounds = true
-        menuButton.layer.borderWidth = 1
-        menuButton.layer.borderColor = UIColor.darkGray.cgColor
+        menuButton.layer.borderWidth = borderWidth
+        menuButton.layer.borderColor = borderColor
         locationButton.layer.cornerRadius = locationButton.bounds.height/2.0
         locationButton.layer.masksToBounds = true
-        locationButton.layer.borderWidth = 1
-        locationButton.layer.borderColor = UIColor.darkGray.cgColor
+        locationButton.layer.borderWidth = borderWidth
+        locationButton.layer.borderColor = borderColor
+        markCreateView.layer.cornerRadius = markCreateView.bounds.height/2.0
+        markCreateView.layer.masksToBounds = true
+        markCreateView.layer.borderWidth = borderWidth
+        markCreateView.layer.borderColor = borderColor
+        
     
     }
     
@@ -109,7 +121,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     @IBAction func markTapped(_ sender: Any) {
         
-        placeAnnotation(title: "My Location", subtitle: "", lat: userLocation.coordinate.latitude, long: userLocation.coordinate.longitude)
+        openMarkCreateView()
         
     }
     
@@ -121,7 +133,34 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         determineCurrentLocation()
     }
     
+    @IBAction func saveTapped(_ sender: Any) {
+        closeMarkCreateView()
+        placeAnnotation(title: markTitleTextField.text!, subtitle: "", lat: userLocation.coordinate.latitude, long: userLocation.coordinate.longitude)
+    }
     
+    @IBAction func cancelTapped(_ sender: Any) {
+        closeMarkCreateView()
+    }
+    
+    func closeMarkCreateView() {
+        markTitleTextField.resignFirstResponder()
+        UIView.animate(withDuration: 0.335, animations: {
+            self.markCreateView.alpha = 0
+        }, completion: { (flag) in
+            self.markCreateView.isHidden = true
+        })
+    }
+    
+    func openMarkCreateView() {
+        self.markCreateView.alpha = 0
+        markCreateView.isHidden = false
+        
+        UIView.animate(withDuration: 0.35, animations: {
+            self.markCreateView.alpha = 1
+        }, completion: { (flag) in
+            self.markTitleTextField.becomeFirstResponder()
+        })
+    }
     
     func placeAnnotation(title : String, subtitle: String, lat : CLLocationDegrees, long : CLLocationDegrees) {
         
