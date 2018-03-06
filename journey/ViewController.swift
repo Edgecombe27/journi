@@ -11,18 +11,39 @@ import CoreLocation
 import MapKit
 
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate{
-
+ 
     
     
-    @IBOutlet var mapView: MKMapView!
+    @IBOutlet var contentView: UIView!
+    @IBOutlet var markButton: UIButton!
+    @IBOutlet var menuButton: UIButton!
+    @IBOutlet var locationButton: UIButton!
     
+    var mapView: MKMapView!
     var locationManager: CLLocationManager!
+    var rightViewExtended = false
+    var textColor : UIColor!
+    var userLocation : CLLocation!
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        markButton.layer.cornerRadius = markButton.bounds.height/2.0
+        markButton.layer.masksToBounds = true
+        markButton.layer.borderWidth = 1
+        markButton.layer.borderColor = UIColor.darkGray.cgColor
+        menuButton.layer.cornerRadius = menuButton.bounds.height/2.0
+        menuButton.layer.masksToBounds = true
+        menuButton.layer.borderWidth = 1
+        menuButton.layer.borderColor = UIColor.darkGray.cgColor
+        locationButton.layer.cornerRadius = locationButton.bounds.height/2.0
+        locationButton.layer.masksToBounds = true
+        locationButton.layer.borderWidth = 1
+        locationButton.layer.borderColor = UIColor.darkGray.cgColor
+    
     }
     
     override func didReceiveMemoryWarning() {
@@ -45,12 +66,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     func createMapView()
     {
-        mapView = MKMapView(frame: CGRect(x: 0, y: 0, width: mapView.bounds.size.width, height: view.bounds.size.height))
+        mapView = MKMapView(frame: CGRect(x: 0, y: 0, width: view.bounds.size.width, height: view.bounds.size.height))
         mapView.delegate = self
         mapView.showsUserLocation = true
         mapView.mapType = MKMapType.standard
-        
-        view.addSubview(mapView)
+        contentView.addSubview(mapView)
     }
     
     func determineCurrentLocation()
@@ -67,7 +87,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let userLocation:CLLocation = locations[0] as CLLocation
+        userLocation = locations[0] as CLLocation
         
         // Call stopUpdatingLocation() to stop listening for location updates,
         // other wise this function will be called every time when user location changes.
@@ -86,6 +106,22 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     {
         print("Error \(error)")
     }
+    
+    @IBAction func markTapped(_ sender: Any) {
+        
+        placeAnnotation(title: "My Location", subtitle: "", lat: userLocation.coordinate.latitude, long: userLocation.coordinate.longitude)
+        
+    }
+    
+    @IBAction func menuTapped(_ sender: Any) {
+        
+    }
+    
+    @IBAction func locationTapped(_ sender: Any) {
+        determineCurrentLocation()
+    }
+    
+    
     
     func placeAnnotation(title : String, subtitle: String, lat : CLLocationDegrees, long : CLLocationDegrees) {
         
