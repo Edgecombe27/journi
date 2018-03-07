@@ -22,6 +22,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet var cancelButton: UIButton!
     @IBOutlet var markCreateView: UIView!
     @IBOutlet var markTitleTextField: UITextField!
+    @IBOutlet var mapPressRecognizer: UILongPressGestureRecognizer!
     
     var mapView: MKMapView!
     var locationManager: CLLocationManager!
@@ -30,7 +31,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     var userLocation : CLLocation!
     var userData : UserData!
     var savedMarks : [Mark]!
-    
+    var longPress : UILongPressGestureRecognizer!
+    var selectedAnnotation : MKAnnotation!
+    var isCreating = false
+    var guesturePerforming = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +64,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         cancelButton.layer.borderWidth = borderWidth
         cancelButton.layer.borderColor = borderColor
         
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -86,6 +91,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         mapView.delegate = self
         mapView.showsUserLocation = true
         mapView.mapType = MKMapType.standard
+        mapView.addGestureRecognizer(mapPressRecognizer)
         contentView.addSubview(mapView)
         loadSavedMarks()
     }
@@ -103,69 +109,25 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
     }
     
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        print("lol")
+    }
+    
+    @IBAction func mapViewPressed(_ sender: UILongPressGestureRecognizer) {
+        if !isCreating && !guesturePerforming{
+            guesturePerforming = true
+            let location = mapView.convert(sender.location(in: mapView), toCoordinateFrom: mapView)
+                placeAnnotation(mark: Mark(title: "", subtitle: "", latitude: location.latitude, longitude: location.longitude))
+            focusOnLocation(latitude: location.latitude, longitude: location.longitude)
+                openMarkCreateView()
+            guesturePerforming = false
+        }
+    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         userLocation = locations[0] as CLLocation
-        
-        // Call stopUpdatingLocation() to stop listening for location updates,
-        // other wise this function will be called every time when user location changes.
-        //manager.stopUpdatingLocation()
-        
-        let center = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-        
-        mapView.setRegion(region, animated: true)
-        
+        focusOnLocation(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
         locationManager.stopUpdatingLocation()
-        
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
-    {
-        print("Error \(error)")
-    }
-    
-    @IBAction func markTapped(_ sender: Any) {
-        openMarkCreateView()
-    }
-    
-    @IBAction func menuTapped(_ sender: Any) {
-        
-    }
-    
-    @IBAction func locationTapped(_ sender: Any) {
-        determineCurrentLocation()
-    }
-    
-    @IBAction func saveTapped(_ sender: Any) {
-        let mark = Mark(title: markTitleTextField.text!, subtitle: "", latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
-        closeMarkCreateView()
-        placeAnnotation(mark: mark)
-        userData.saveMark(mark: mark)
-    }
-    
-    @IBAction func cancelTapped(_ sender: Any) {
-        closeMarkCreateView()
-    }
-    
-    func closeMarkCreateView() {
-        markTitleTextField.resignFirstResponder()
-        markTitleTextField.text = ""
-        UIView.animate(withDuration: 0.335, animations: {
-            self.markCreateView.alpha = 0
-        }, completion: { (flag) in
-            self.markCreateView.isHidden = true
-        })
-    }
-    
-    func openMarkCreateView() {
-        self.markCreateView.alpha = 0
-        markCreateView.isHidden = false
-        
-        UIView.animate(withDuration: 0.35, animations: {
-            self.markCreateView.alpha = 1
-        }, completion: { (flag) in
-            self.markTitleTextField.becomeFirstResponder()
-        })
     }
     
     func loadSavedMarks() {
@@ -184,9 +146,73 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         myAnnotation.coordinate = CLLocationCoordinate2DMake(mark.latitude, mark.longitude);
         myAnnotation.title = mark.title
         myAnnotation.subtitle = mark.subtitle
+        selectedAnnotation = myAnnotation
         mapView.addAnnotation(myAnnotation)
         
     }
+    
+    func focusOnLocation(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+        let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        mapView.setRegion(region, animated: true)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
+    {
+        print("Error \(error)")
+    }
+    
+    @IBAction func markTapped(_ sender: Any) {
+        openMarkCreateView()
+    }
+    
+    @IBAction func menuTapped(_ sender: Any) {
+        let menu = MenuViewController()
+        menu.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        menu.myLocations = savedMarks
+        menu.viewController = self
+        present(menu, animated: true, completion: nil)
+    }
+    
+    @IBAction func locationTapped(_ sender: Any) {
+        determineCurrentLocation()
+    }
+    
+    @IBAction func saveTapped(_ sender: Any) {
+        let mark = Mark(title: markTitleTextField.text!, subtitle: "", latitude: selectedAnnotation.coordinate.latitude, longitude: selectedAnnotation.coordinate.longitude)
+        closeMarkCreateView()
+        placeAnnotation(mark: mark)
+        userData.saveMark(mark: mark)
+        savedMarks.append(mark)
+    }
+    
+    @IBAction func cancelTapped(_ sender: Any) {
+        closeMarkCreateView()
+        mapView.removeAnnotation(selectedAnnotation)
+    }
+    
+    func closeMarkCreateView() {
+        markTitleTextField.resignFirstResponder()
+        markTitleTextField.text = ""
+        UIView.animate(withDuration: 0.335, animations: {
+            self.markCreateView.alpha = 0
+        }, completion: { (flag) in
+            self.markCreateView.isHidden = true
+        })
+    }
+    
+    func openMarkCreateView() {
+        self.markCreateView.alpha = 0
+        markCreateView.isHidden = false
+        isCreating = true
+        UIView.animate(withDuration: 0.35, animations: {
+            self.markCreateView.alpha = 1
+        }, completion: { (flag) in
+            self.markTitleTextField.becomeFirstResponder()
+        })
+    }
+    
+    
     
 }
 

@@ -25,7 +25,7 @@ class UserData {
     }
     
     func saveMark(mark: Mark) {
-        data[mark.title] = [mark.subtitle, mark.latitude, mark.longitude]
+        data[mark.title] = [mark.subtitle, mark.latitude.description, mark.longitude.description]
         UserDefaults.standard.setPersistentDomain(data, forName: USER_DATA_KEY)
     }
     
@@ -38,8 +38,9 @@ class UserData {
         
         var result : [Mark] = []
         
-        for mark in (data as! [String : [String]]) {
-            result.append(Mark(title: mark.key, subtitle: mark.value[0], latitude: mark.value[1], longitude: mark.value[2]))
+        for mark in data {
+            let value = mark.value as! [String]
+            result.append(Mark(title: mark.key, subtitle: value[0], latitude: value[1], longitude: value[2]))
         }
         return result
     }

@@ -150,6 +150,7 @@
                         <outlet property="cancelButton" destination="nIg-7H-pIN" id="QA2-xc-5QR"/>
                         <outlet property="contentView" destination="pHX-Iv-Tka" id="iuv-lE-epa"/>
                         <outlet property="locationButton" destination="wsZ-Vu-kfv" id="5cR-WD-BB9"/>
+                        <outlet property="mapPressRecognizer" destination="Fi9-Cg-MSG" id="Kr9-wF-tBh"/>
                         <outlet property="markButton" destination="FFx-Zp-sTF" id="4q0-vi-lul"/>
                         <outlet property="markCreateView" destination="SMA-eI-f7p" id="iYH-qr-tOV"/>
                         <outlet property="markTitleTextField" destination="pE5-3k-bGD" id="3bZ-PH-zS1"/>
@@ -158,6 +159,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="Fi9-Cg-MSG">
+                    <connections>
+                        <action selector="mapViewPressed:" destination="BYZ-38-t0r" id="Any-A1-maf"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="140" y="133.5832083958021"/>
         </scene>

@@ -16,6 +16,10 @@
 		FB27DF78204DD87A00FFC649 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB27DF77204DD87A00FFC649 /* UserData.swift */; };
 		FB27DF7A204EDC0400FFC649 /* Mark.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB27DF79204EDC0400FFC649 /* Mark.swift */; };
 		FB27DF7C204F195C00FFC649 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB27DF7B204F195C00FFC649 /* UIColor.swift */; };
+		FBF3DB2E2050807700AB95C3 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3DB2C2050807700AB95C3 /* MenuViewController.swift */; };
+		FBF3DB2F2050807700AB95C3 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBF3DB2D2050807700AB95C3 /* MenuViewController.xib */; };
+		FBF3DB32205082BA00AB95C3 /* LocationCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3DB30205082BA00AB95C3 /* LocationCellView.swift */; };
+		FBF3DB33205082BA00AB95C3 /* LocationCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBF3DB31205082BA00AB95C3 /* LocationCellView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		FB27DF77204DD87A00FFC649 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		FB27DF79204EDC0400FFC649 /* Mark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mark.swift; sourceTree = "<group>"; };
 		FB27DF7B204F195C00FFC649 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		FBF3DB2C2050807700AB95C3 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		FBF3DB2D2050807700AB95C3 /* MenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
+		FBF3DB30205082BA00AB95C3 /* LocationCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCellView.swift; sourceTree = "<group>"; };
+		FBF3DB31205082BA00AB95C3 /* LocationCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationCellView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +78,10 @@
 				FB27DF66204DCEF100FFC649 /* Main.storyboard */,
 				FB27DF6C204DCEF100FFC649 /* Assets.xcassets */,
 				FB27DF6E204DCEF100FFC649 /* LaunchScreen.storyboard */,
+				FBF3DB2C2050807700AB95C3 /* MenuViewController.swift */,
+				FBF3DB2D2050807700AB95C3 /* MenuViewController.xib */,
+				FBF3DB30205082BA00AB95C3 /* LocationCellView.swift */,
+				FBF3DB31205082BA00AB95C3 /* LocationCellView.xib */,
 				FB27DF71204DCEF100FFC649 /* Info.plist */,
 				FB27DF69204DCEF100FFC649 /* journey.xcdatamodeld */,
 			);
@@ -136,8 +148,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB27DF70204DCEF100FFC649 /* LaunchScreen.storyboard in Resources */,
+				FBF3DB33205082BA00AB95C3 /* LocationCellView.xib in Resources */,
 				FB27DF6D204DCEF100FFC649 /* Assets.xcassets in Resources */,
 				FB27DF68204DCEF100FFC649 /* Main.storyboard in Resources */,
+				FBF3DB2F2050807700AB95C3 /* MenuViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,8 +163,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB27DF7A204EDC0400FFC649 /* Mark.swift in Sources */,
+				FBF3DB32205082BA00AB95C3 /* LocationCellView.swift in Sources */,
 				FB27DF7C204F195C00FFC649 /* UIColor.swift in Sources */,
 				FB27DF65204DCEF100FFC649 /* ViewController.swift in Sources */,
+				FBF3DB2E2050807700AB95C3 /* MenuViewController.swift in Sources */,
 				FB27DF6B204DCEF100FFC649 /* journey.xcdatamodeld in Sources */,
 				FB27DF78204DD87A00FFC649 /* UserData.swift in Sources */,
 				FB27DF63204DCEF100FFC649 /* AppDelegate.swift in Sources */,
