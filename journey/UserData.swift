@@ -16,9 +16,9 @@ class UserData {
     
     init() {
         
-        data = UserDefaults.standard.persistentDomain(forName: USER_DATA_KEY)!
-        
-        if data.count == 0 {
+        if let savedData = UserDefaults.standard.persistentDomain(forName: USER_DATA_KEY)  {
+            data = savedData
+        } else {
             data = [:]
         }
         

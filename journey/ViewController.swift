@@ -28,7 +28,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     var rightViewExtended = false
     var textColor : UIColor!
     var userLocation : CLLocation!
-    
+    var userData : UserData!
+    var savedMarks : [Mark]!
     
     
     override func viewDidLoad() {
@@ -50,12 +51,15 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         locationButton.layer.masksToBounds = true
         locationButton.layer.borderWidth = borderWidth
         locationButton.layer.borderColor = borderColor
-        markCreateView.layer.cornerRadius = markCreateView.bounds.height/2.0
-        markCreateView.layer.masksToBounds = true
-        markCreateView.layer.borderWidth = borderWidth
-        markCreateView.layer.borderColor = borderColor
+        saveButton.layer.cornerRadius = saveButton.bounds.height/2.0
+        saveButton.layer.masksToBounds = true
+        saveButton.layer.borderWidth = borderWidth
+        saveButton.layer.borderColor = borderColor
+        cancelButton.layer.cornerRadius = cancelButton.bounds.height/2.0
+        cancelButton.layer.masksToBounds = true
+        cancelButton.layer.borderWidth = borderWidth
+        cancelButton.layer.borderColor = borderColor
         
-    
     }
     
     override func didReceiveMemoryWarning() {
@@ -83,6 +87,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         mapView.showsUserLocation = true
         mapView.mapType = MKMapType.standard
         contentView.addSubview(mapView)
+        loadSavedMarks()
     }
     
     func determineCurrentLocation()
@@ -120,9 +125,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     @IBAction func markTapped(_ sender: Any) {
-        
         openMarkCreateView()
-        
     }
     
     @IBAction func menuTapped(_ sender: Any) {
@@ -134,8 +137,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     @IBAction func saveTapped(_ sender: Any) {
+        let mark = Mark(title: markTitleTextField.text!, subtitle: "", latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
         closeMarkCreateView()
-        placeAnnotation(title: markTitleTextField.text!, subtitle: "", lat: userLocation.coordinate.latitude, long: userLocation.coordinate.longitude)
+        placeAnnotation(mark: mark)
+        userData.saveMark(mark: mark)
     }
     
     @IBAction func cancelTapped(_ sender: Any) {
@@ -144,6 +149,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     func closeMarkCreateView() {
         markTitleTextField.resignFirstResponder()
+        markTitleTextField.text = ""
         UIView.animate(withDuration: 0.335, animations: {
             self.markCreateView.alpha = 0
         }, completion: { (flag) in
@@ -162,13 +168,22 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         })
     }
     
-    func placeAnnotation(title : String, subtitle: String, lat : CLLocationDegrees, long : CLLocationDegrees) {
+    func loadSavedMarks() {
+        userData = UserData()
+        savedMarks = userData.getData()
+        
+        for mark in savedMarks {
+            placeAnnotation(mark: mark)
+        }
+    }
+    
+    func placeAnnotation(mark : Mark) {
         
         // Drop a pin at user's Current Location
         let myAnnotation: MKPointAnnotation = MKPointAnnotation()
-        myAnnotation.coordinate = CLLocationCoordinate2DMake(lat, long);
-        myAnnotation.title = title
-        myAnnotation.subtitle = subtitle
+        myAnnotation.coordinate = CLLocationCoordinate2DMake(mark.latitude, mark.longitude);
+        myAnnotation.title = mark.title
+        myAnnotation.subtitle = mark.subtitle
         mapView.addAnnotation(myAnnotation)
         
     }
