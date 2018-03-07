@@ -32,7 +32,7 @@
                                     <constraint firstAttribute="height" constant="60" id="gAr-jv-ANx"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                <state key="normal" title="O">
+                                <state key="normal" title="III">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -48,7 +48,7 @@
                                     <constraint firstAttribute="width" secondItem="FFx-Zp-sTF" secondAttribute="height" multiplier="1:1" constant="1" id="4PS-XW-uer"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                <state key="normal" title="X">
+                                <state key="normal" title="O">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>

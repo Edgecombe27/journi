@@ -199,6 +199,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }, completion: { (flag) in
             self.markCreateView.isHidden = true
         })
+        isCreating = false
     }
     
     func openMarkCreateView() {
