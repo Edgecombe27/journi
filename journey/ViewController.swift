@@ -163,6 +163,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     @IBAction func markTapped(_ sender: Any) {
+        placeAnnotation(mark: Mark(title: "", subtitle: "", latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude))
         openMarkCreateView()
     }
     
@@ -184,11 +185,14 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         placeAnnotation(mark: mark)
         userData.saveMark(mark: mark)
         savedMarks.append(mark)
+        selectedAnnotation = nil
     }
     
     @IBAction func cancelTapped(_ sender: Any) {
         closeMarkCreateView()
-        mapView.removeAnnotation(selectedAnnotation)
+        if selectedAnnotation != nil {
+            mapView.removeAnnotation(selectedAnnotation)
+        }
     }
     
     func closeMarkCreateView() {
