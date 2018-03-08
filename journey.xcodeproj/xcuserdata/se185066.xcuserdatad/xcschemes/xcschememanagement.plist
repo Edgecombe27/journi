@@ -7,7 +7,7 @@
 		<key>journey.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>0</integer>
 		</dict>
 		<key>journi wear (Notification).xcscheme</key>
 		<dict>
@@ -17,7 +17,7 @@
 		<key>journi wear.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 	</dict>
 </dict>

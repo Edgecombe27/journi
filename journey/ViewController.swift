@@ -9,10 +9,9 @@
 import UIKit
 import CoreLocation
 import MapKit
+import WatchConnectivity
 
-class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UITextFieldDelegate{
- 
-    
+class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UITextFieldDelegate, WCSessionDelegate{
     
     @IBOutlet var contentView: UIView!
     @IBOutlet var markButton: UIButton!
@@ -24,6 +23,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet var markTitleTextField: UITextField!
     @IBOutlet var mapPressRecognizer: UILongPressGestureRecognizer!
     
+    var session : WCSession!
     var mapView: MKMapView!
     var locationManager: CLLocationManager!
     var rightViewExtended = false
@@ -35,6 +35,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     var selectedAnnotation : MKAnnotation!
     var isCreating = false
     var guesturePerforming = false
+    var watchLocations : [Mark]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +65,30 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         cancelButton.layer.borderWidth = borderWidth
         cancelButton.layer.borderColor = borderColor
         
+        if (WCSession.isSupported()) {
+            session = WCSession.default
+            session.delegate = self;
+            session.activate()
+        }
+        
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        
+        for location in (message as! [String: [String: String]]){
+            watchLocations.append(Mark(title: "", subtitle: "", latitude: location.value["latitude"]!, longitude: location.value["longitude"]!))
+        }
+        
+    }
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
         
     }
     
