@@ -17,14 +17,14 @@
                         <map height="109" alignment="left" id="eaN-Qx-Aks"/>
                         <group width="134" alignment="left" id="ehZ-Dk-lyr">
                             <items>
-                                <button width="0.5" alignment="left" title="|||" id="rTg-gv-RL3">
+                                <button width="0.5" height="35" alignment="left" title="|||" id="rTg-gv-RL3">
                                     <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="font" type="system" pointSize="30"/>
                                     <connections>
                                         <action selector="locationTapped" destination="AgC-eL-Hgc" id="Qe8-Iw-DZN"/>
                                     </connections>
                                 </button>
-                                <button width="0.5" alignment="left" title="O" id="um6-MB-5hv">
+                                <button width="0.5" height="35" alignment="left" title="O" id="um6-MB-5hv">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="font" type="system" pointSize="30"/>
@@ -40,7 +40,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="344.5"/>
+            <point key="canvasLocation" x="220" y="344"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">

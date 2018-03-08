@@ -46,8 +46,11 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, WCS
         let region = MKCoordinateRegionMake(self.mapLocation!, span)
         self.mapView.setRegion(region)
         
-        self.mapView.addAnnotation(self.mapLocation!,
-                                   with: .green)
+        
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        
     }
     
     @IBAction func locationTapped() {
@@ -55,8 +58,11 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, WCS
     }
     
     @IBAction func saveTapped() {
+        self.mapView.addAnnotation(self.mapLocation!,
+                                   with: .green)
         let applicationData = [currentLocation.latitude.description: ["latitude":currentLocation.latitude.description,
-                               "longitude": currentLocation.longitude.description]]
+        "longitude": currentLocation.longitude.description]]
+        
         session.sendMessage(applicationData, replyHandler: nil, errorHandler: nil)
     }
     

@@ -75,8 +75,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         
-        for location in (message as! [String: [String: String]]){
-            watchLocations.append(Mark(title: "", subtitle: "", latitude: location.value["latitude"]!, longitude: location.value["longitude"]!))
+        let data = (message as! [String: [String: String]])
+        watchLocations = []
+        for location in data{
+            let lat : String = location.value["latitude"]!
+            let long : String = location.value["longitude"]!
+            
+            watchLocations.append(Mark(title: "", subtitle: "", latitude: lat, longitude: long))
         }
         
     }
