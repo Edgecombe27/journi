@@ -4,8 +4,8 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,16 +24,52 @@
                         <rect key="frame" x="16" y="11" width="288" height="80"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aKY-CG-ytD">
-                                <rect key="frame" x="24" y="40" width="0.0" height="0.0"/>
+                                <rect key="frame" x="24" y="40" width="152" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wge-Y0-VgO">
+                                <rect key="frame" x="232" y="20" width="40" height="40"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.25098039220000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="wge-Y0-VgO" secondAttribute="height" multiplier="1:1" id="bYG-Wi-OpA"/>
+                                    <constraint firstAttribute="height" constant="40" id="s3h-8K-jSU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="O">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="au8-Jx-2pa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x26-jc-rJ5">
+                                <rect key="frame" x="184" y="20" width="40" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.46274509800000002" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="OdD-73-s5S"/>
+                                    <constraint firstAttribute="width" secondItem="x26-jc-rJ5" secondAttribute="height" multiplier="1:1" id="to2-bR-o1d"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="O">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="editTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="6SZ-PR-lnr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="x26-jc-rJ5" firstAttribute="leading" secondItem="aKY-CG-ytD" secondAttribute="trailing" constant="8" id="JWo-fj-f1a"/>
+                            <constraint firstAttribute="trailing" secondItem="wge-Y0-VgO" secondAttribute="trailing" constant="16" id="Jii-Ns-0P7"/>
+                            <constraint firstItem="x26-jc-rJ5" firstAttribute="centerY" secondItem="wge-Y0-VgO" secondAttribute="centerY" id="MrT-XV-hVG"/>
+                            <constraint firstItem="wge-Y0-VgO" firstAttribute="centerY" secondItem="z3s-Yu-ItH" secondAttribute="centerY" id="NrC-ZN-0gQ"/>
                             <constraint firstItem="aKY-CG-ytD" firstAttribute="centerY" secondItem="z3s-Yu-ItH" secondAttribute="centerY" id="PVy-K9-xnW"/>
                             <constraint firstItem="aKY-CG-ytD" firstAttribute="leading" secondItem="z3s-Yu-ItH" secondAttribute="leading" constant="24" id="Qu2-vL-jLQ"/>
+                            <constraint firstItem="wge-Y0-VgO" firstAttribute="leading" secondItem="x26-jc-rJ5" secondAttribute="trailing" constant="8" id="WER-aZ-fSh"/>
+                            <constraint firstItem="x26-jc-rJ5" firstAttribute="width" secondItem="x26-jc-rJ5" secondAttribute="height" multiplier="1:1" id="aLh-o1-EId"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -49,6 +85,8 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="cellContentView" destination="z3s-Yu-ItH" id="TEr-G1-1aq"/>
+                <outlet property="deleteButton" destination="wge-Y0-VgO" id="5Gb-QH-yZ8"/>
+                <outlet property="editButton" destination="x26-jc-rJ5" id="2ev-oT-eSd"/>
                 <outlet property="titleLabel" destination="aKY-CG-ytD" id="5Ae-Im-2LL"/>
             </connections>
             <point key="canvasLocation" x="59" y="81"/>

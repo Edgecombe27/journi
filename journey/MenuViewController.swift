@@ -12,8 +12,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBOutlet var tableView: UITableView!
     @IBOutlet var exitButton: UIButton!
-    
     @IBOutlet var titleView: UIView!
+    
     var myLocations : [Mark]!
     var viewController : ViewController!
     
@@ -30,6 +30,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         exitButton.layer.masksToBounds = true
         // Do any additional setup after loading the view.
     }
+    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return myLocations.count
@@ -37,7 +38,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "location_cell") as! LocationCellView
-        cell.render(withMark: myLocations[indexPath.row])
+        cell.render(withMark: myLocations[indexPath.row], andMenu: self)
         return cell
     }
     

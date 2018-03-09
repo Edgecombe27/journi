@@ -22,6 +22,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet var markCreateView: UIView!
     @IBOutlet var markTitleTextField: UITextField!
     @IBOutlet var mapPressRecognizer: UILongPressGestureRecognizer!
+    @IBOutlet var textFieldContainerView: UIView!
     
     var session : WCSession!
     var mapView: MKMapView!
@@ -42,29 +43,14 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let borderWidth : CGFloat = 0.75
-        let borderColor = UIColor.lightGray.cgColor
         
-        markButton.layer.cornerRadius = markButton.bounds.height/2.0
-        markButton.layer.masksToBounds = true
-        markButton.layer.borderWidth = borderWidth
-        markButton.layer.borderColor = borderColor
-        menuButton.layer.cornerRadius = menuButton.bounds.height/2.0
-        menuButton.layer.masksToBounds = true
-        menuButton.layer.borderWidth = borderWidth
-        menuButton.layer.borderColor = borderColor
-        locationButton.layer.cornerRadius = locationButton.bounds.height/2.0
-        locationButton.layer.masksToBounds = true
-        locationButton.layer.borderWidth = borderWidth
-        locationButton.layer.borderColor = borderColor
-        saveButton.layer.cornerRadius = saveButton.bounds.height/2.0
-        saveButton.layer.masksToBounds = true
-        saveButton.layer.borderWidth = borderWidth
-        saveButton.layer.borderColor = borderColor
-        cancelButton.layer.cornerRadius = cancelButton.bounds.height/2.0
-        cancelButton.layer.masksToBounds = true
-        cancelButton.layer.borderWidth = borderWidth
-        cancelButton.layer.borderColor = borderColor
+        
+        roundView(myView: markButton)
+        roundView(myView: menuButton)
+        roundView(myView: locationButton)
+        roundView(myView: saveButton)
+        roundView(myView: cancelButton)
+        roundView(myView: textFieldContainerView)
         
         if (WCSession.isSupported()) {
             session = WCSession.default
@@ -72,6 +58,15 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             session.activate()
         }
         
+    }
+    
+    func roundView(myView: UIView) {
+        let borderWidth : CGFloat = 0.75
+        let borderColor = UIColor.lightGray.cgColor
+        myView.layer.cornerRadius = myView.bounds.height/2.0
+        myView.layer.masksToBounds = true
+        myView.layer.borderWidth = borderWidth
+        myView.layer.borderColor = borderColor
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
@@ -83,9 +78,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             let long : String = location.value["longitude"]!
             
             watchLocations.append(Mark(title: "", subtitle: "", latitude: lat, longitude: long))
-        }
-        if watchLocations.count > 0 {
-                self.dismiss(animated: true, completion: nil)
         }
         
         if watchLocations.count > 0 {
@@ -166,6 +158,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
     }
     
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        
+    }
+    
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         userLocation = locations[0] as CLLocation
         focusOnLocation(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
@@ -173,6 +170,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     func loadSavedMarks() {
+        
+        mapView.removeAnnotations(mapView.annotations)
+        
         userData = UserData()
         savedMarks = userData.getData()
         
@@ -199,6 +199,20 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         mapView.setRegion(region, animated: true)
     }
     
+    func editMark(withTitle: String) {
+        var mark : Mark!
+        for m in savedMarks {
+            if m.title == withTitle {
+                mark = m
+                break
+            }
+        }
+        
+        focusOnLocation(latitude: mark.latitude, longitude: mark.longitude)
+        
+        
+    }
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
     {
         print("Error \(error)")
@@ -216,6 +230,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         if !isCreating {
             let menu = MenuViewController()
             menu.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+            savedMarks.sort(by: { (m1, m2) in
+                return m1.title < m2.title
+            })
             menu.myLocations = savedMarks
             menu.viewController = self
             present(menu, animated: true, completion: nil)
