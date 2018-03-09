@@ -23,6 +23,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet var markTitleTextField: UITextField!
     @IBOutlet var mapPressRecognizer: UILongPressGestureRecognizer!
     @IBOutlet var textFieldContainerView: UIView!
+    @IBOutlet var markInfoView: UIView!
+    @IBOutlet var markInfoLabel: UILabel!
     
     var session : WCSession!
     var mapView: MKMapView!
