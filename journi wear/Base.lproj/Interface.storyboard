@@ -18,7 +18,7 @@
                         <group width="134" alignment="left" id="ehZ-Dk-lyr">
                             <items>
                                 <button width="0.5" height="35" alignment="left" title="|||" id="rTg-gv-RL3">
-                                    <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.0" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="font" type="system" pointSize="30"/>
                                     <connections>
                                         <action selector="locationTapped" destination="AgC-eL-Hgc" id="Qe8-Iw-DZN"/>

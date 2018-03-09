@@ -36,6 +36,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     var isCreating = false
     var guesturePerforming = false
     var watchLocations : [Mark]!
+    var areUnnamedLocations = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,8 +84,19 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             
             watchLocations.append(Mark(title: "", subtitle: "", latitude: lat, longitude: long))
         }
+        if watchLocations.count > 0 {
+                self.dismiss(animated: true, completion: nil)
+        }
+        
+        if watchLocations.count > 0 {
+            focusOnLocation(latitude: watchLocations[0].latitude, longitude: watchLocations[0].longitude)
+            placeAnnotation(mark: Mark(title: "", subtitle: "", latitude: watchLocations[0].latitude, longitude: watchLocations[0].longitude))
+            areUnnamedLocations = true
+            openMarkCreateView()
+        }
         
     }
+    
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         
     }
@@ -193,16 +205,21 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     @IBAction func markTapped(_ sender: Any) {
-        placeAnnotation(mark: Mark(title: "", subtitle: "", latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude))
-        openMarkCreateView()
+        if !isCreating {
+            placeAnnotation(mark: Mark(title: "", subtitle: "", latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude))
+            openMarkCreateView()
+        }
+        
     }
     
     @IBAction func menuTapped(_ sender: Any) {
-        let menu = MenuViewController()
-        menu.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        menu.myLocations = savedMarks
-        menu.viewController = self
-        present(menu, animated: true, completion: nil)
+        if !isCreating {
+            let menu = MenuViewController()
+            menu.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+            menu.myLocations = savedMarks
+            menu.viewController = self
+            present(menu, animated: true, completion: nil)
+        }
     }
     
     @IBAction func locationTapped(_ sender: Any) {
@@ -210,18 +227,51 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     @IBAction func saveTapped(_ sender: Any) {
+        if selectedAnnotation != nil {
+            mapView.removeAnnotation(selectedAnnotation)
+        }
         let mark = Mark(title: markTitleTextField.text!, subtitle: "", latitude: selectedAnnotation.coordinate.latitude, longitude: selectedAnnotation.coordinate.longitude)
-        closeMarkCreateView()
-        placeAnnotation(mark: mark)
-        userData.saveMark(mark: mark)
-        savedMarks.append(mark)
-        selectedAnnotation = nil
+        if !areUnnamedLocations {
+            closeMarkCreateView()
+            placeAnnotation(mark: mark)
+            userData.saveMark(mark: mark)
+            savedMarks.append(mark)
+            selectedAnnotation = nil
+        } else {
+            placeAnnotation(mark: mark)
+            userData.saveMark(mark: mark)
+            savedMarks.append(mark)
+            watchLocations.remove(at: 0)
+            if watchLocations.count > 0 {
+                markTitleTextField.text = ""
+                focusOnLocation(latitude: watchLocations[0].latitude, longitude: watchLocations[0].longitude)
+                placeAnnotation(mark: Mark(title: "", subtitle: "", latitude: watchLocations[0].latitude, longitude: watchLocations[0].longitude))
+            } else {
+                areUnnamedLocations = false
+                closeMarkCreateView()
+                selectedAnnotation = nil
+            }
+        }
     }
     
     @IBAction func cancelTapped(_ sender: Any) {
-        closeMarkCreateView()
+        
         if selectedAnnotation != nil {
             mapView.removeAnnotation(selectedAnnotation)
+        }
+        if !areUnnamedLocations {
+            closeMarkCreateView()
+        } else {
+            watchLocations.remove(at: 0)
+            if watchLocations.count > 0 {
+                markTitleTextField.text = ""
+                focusOnLocation(latitude: watchLocations[0].latitude, longitude: watchLocations[0].longitude)
+                placeAnnotation(mark: Mark(title: "", subtitle: "", latitude: watchLocations[0].latitude, longitude: watchLocations[0].longitude))
+            } else {
+                areUnnamedLocations = false
+                closeMarkCreateView()
+                selectedAnnotation = nil
+            }
         }
     }
     
