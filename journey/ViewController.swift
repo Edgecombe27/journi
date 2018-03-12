@@ -64,6 +64,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         cancelButton.layer.borderWidth = borderWidth
         cancelButton.layer.borderColor = borderColor
         
+        userLocation = CLLocation(latitude: CLLocationDegrees(exactly: 0)!, longitude: CLLocationDegrees(exactly: 0)!)
         
     }
     
@@ -163,8 +164,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     @IBAction func markTapped(_ sender: Any) {
-        placeAnnotation(mark: Mark(title: "", subtitle: "", latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude))
-        openMarkCreateView()
+        if CLLocationManager.locationServicesEnabled() {
+            placeAnnotation(mark: Mark(title: "", subtitle: "", latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude))
+            openMarkCreateView()
+        }
     }
     
     @IBAction func menuTapped(_ sender: Any) {

@@ -19,13 +19,13 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>4</string>
+	<string>6</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>We do not share your location with anyone.</string>
+	<string>Share your location to save the places you&apos;ve been! We do not share your location with anyone without your permission.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We do not share your location with anyone.</string>
+	<string>Share your location to save the places you&apos;ve been! We do not share your location with anyone without your permission.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
