@@ -25,6 +25,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet var textFieldContainerView: UIView!
     @IBOutlet var markInfoView: UIView!
     @IBOutlet var markInfoLabel: UILabel!
+    @IBOutlet var infoDeleteButton: UIButton!
+    @IBOutlet var infoEditButton: UIButton!
     
     var session : WCSession!
     var mapView: MKMapView!
@@ -40,6 +42,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     var guesturePerforming = false
     var watchLocations : [Mark]!
     var areUnnamedLocations = false
+    var editingMark = false
+    var oldMark : String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +57,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         roundView(myView: saveButton)
         roundView(myView: cancelButton)
         roundView(myView: textFieldContainerView)
+        roundView(myView: markInfoView)
+        roundView(myView: infoDeleteButton)
+        roundView(myView: infoEditButton)
         
         if (WCSession.isSupported()) {
             session = WCSession.default
@@ -146,23 +153,22 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        print("lol")
+        openMarkInfoView(withName: (view.annotation?.title!)!)
     }
     
     @IBAction func mapViewPressed(_ sender: UILongPressGestureRecognizer) {
-        if !isCreating && !guesturePerforming{
+        if !guesturePerforming{
             guesturePerforming = true
             let location = mapView.convert(sender.location(in: mapView), toCoordinateFrom: mapView)
                 placeAnnotation(mark: Mark(title: "", subtitle: "", latitude: location.latitude, longitude: location.longitude))
             focusOnLocation(latitude: location.latitude, longitude: location.longitude)
+            if !isCreating {
                 openMarkCreateView()
+            }
             guesturePerforming = false
         }
     }
     
-    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-        
-    }
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -190,6 +196,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         myAnnotation.coordinate = CLLocationCoordinate2DMake(mark.latitude, mark.longitude);
         myAnnotation.title = mark.title
         myAnnotation.subtitle = mark.subtitle
+        if isCreating {
+            mapView.removeAnnotation(selectedAnnotation)
+        }
         selectedAnnotation = myAnnotation
         mapView.addAnnotation(myAnnotation)
         
@@ -201,7 +210,22 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         mapView.setRegion(region, animated: true)
     }
     
+    func deleteMark(withName : String) {
+        let alert = UIAlertController(title: "Delete Location", message: "Are you sure you want to delete \(withName)?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+            self.userData.deleteMark(withName: withName)
+            self.loadSavedMarks()
+            if !self.markInfoView.isHidden {
+                self.closeMarkInfoView()
+            }
+        }))
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
     func editMark(withTitle: String) {
+        editingMark = true
         var mark : Mark!
         for m in savedMarks {
             if m.title == withTitle {
@@ -210,8 +234,16 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             }
         }
         
+        oldMark = withTitle
         focusOnLocation(latitude: mark.latitude, longitude: mark.longitude)
-        
+        markTitleTextField.text = mark.title
+        for annotation in mapView.annotations {
+            if annotation.title! == mark.title {
+                selectedAnnotation = annotation
+                break
+            }
+        }
+        openMarkCreateView()
         
     }
     
@@ -245,12 +277,27 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         determineCurrentLocation()
     }
     
+    @IBAction func infoDeleteTapped(_ sender: Any) {
+        deleteMark(withName: markInfoLabel.text!)
+    }
+    
+    @IBAction func infoEditTapped(_ sender: Any) {
+        editMark(withTitle: markInfoLabel.text!)
+    }
+    
+    
     @IBAction func saveTapped(_ sender: Any) {
-        if selectedAnnotation != nil {
-            mapView.removeAnnotation(selectedAnnotation)
-        }
         let mark = Mark(title: markTitleTextField.text!, subtitle: "", latitude: selectedAnnotation.coordinate.latitude, longitude: selectedAnnotation.coordinate.longitude)
-        if !areUnnamedLocations {
+        
+        if editingMark {
+            closeMarkCreateView()
+            placeAnnotation(mark: mark)
+            userData.editMark(oldName: oldMark, newMark: mark)
+        } else if userData.markDoesExist(markName: mark.title) {
+            let alert = UIAlertController(title: "oops!", message: "You already have a location with that name!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else if !areUnnamedLocations {
             closeMarkCreateView()
             placeAnnotation(mark: mark)
             userData.saveMark(mark: mark)
@@ -271,6 +318,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 selectedAnnotation = nil
             }
         }
+            
+        if selectedAnnotation != nil {
+            mapView.removeAnnotation(selectedAnnotation)
+        }
     }
     
     @IBAction func cancelTapped(_ sender: Any) {
@@ -278,7 +329,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         if selectedAnnotation != nil {
             mapView.removeAnnotation(selectedAnnotation)
         }
-        if !areUnnamedLocations {
+        
+        if editingMark {
+            closeMarkCreateView()
+        } else if !areUnnamedLocations {
             closeMarkCreateView()
         } else {
             watchLocations.remove(at: 0)
@@ -306,6 +360,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     func openMarkCreateView() {
+        if !markInfoView.isHidden {
+            closeMarkInfoView()
+        }
         self.markCreateView.alpha = 0
         markCreateView.isHidden = false
         isCreating = true
@@ -313,6 +370,26 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             self.markCreateView.alpha = 1
         }, completion: { (flag) in
             self.markTitleTextField.becomeFirstResponder()
+        })
+    }
+    
+    func closeMarkInfoView() {
+        markInfoLabel.text = ""
+        UIView.animate(withDuration: 0.335, animations: {
+            self.markInfoView.alpha = 0
+        }, completion: { (flag) in
+            self.markInfoView.isHidden = true
+        })
+        isCreating = false
+    }
+    
+    func openMarkInfoView(withName: String) {
+        self.markInfoView.alpha = 0
+        markInfoLabel.text = withName
+        markInfoView.isHidden = false
+        UIView.animate(withDuration: 0.35, animations: {
+            self.markInfoView.alpha = 1
+        }, completion: { (flag) in
         })
     }
     
