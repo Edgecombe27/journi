@@ -97,10 +97,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
         
         if watchLocations.count > 0 {
+            openMarkCreateView()
             focusOnLocation(latitude: watchLocations[0].latitude, longitude: watchLocations[0].longitude)
             placeAnnotation(mark: Mark(title: "", subtitle: "", latitude: watchLocations[0].latitude, longitude: watchLocations[0].longitude))
             areUnnamedLocations = true
-            openMarkCreateView()
         }
         
     }
