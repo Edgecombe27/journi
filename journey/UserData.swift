@@ -25,7 +25,7 @@ class UserData {
     }
     
     func markDoesExist(markName : String) -> Bool {
-        return data[markName] != nil
+        return data[markName] != nil || markName == "My Location"
     }
     
     func saveMark(mark: Mark) {
@@ -42,7 +42,7 @@ class UserData {
         
         data[oldName] = nil
         data[newMark.title] = [newMark.subtitle, newMark.latitude.description, newMark.longitude.description]
-        
+        UserDefaults.standard.setPersistentDomain(data, forName: USER_DATA_KEY)
     }
     
     

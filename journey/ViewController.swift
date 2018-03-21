@@ -27,6 +27,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet var markInfoLabel: UILabel!
     @IBOutlet var infoDeleteButton: UIButton!
     @IBOutlet var infoEditButton: UIButton!
+    @IBOutlet var toolbarView: UIView!
     
     var session : WCSession!
     var mapView: MKMapView!
@@ -60,6 +61,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         roundView(myView: markInfoView)
         roundView(myView: infoDeleteButton)
         roundView(myView: infoEditButton)
+        //roundView(myView: toolbarView)
+        
+        toolbarView.backgroundColor = UIColor.clear//.lightGray.withAlphaComponent(0)
+        
         
         if (WCSession.isSupported()) {
             session = WCSession.default
@@ -71,11 +76,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     func roundView(myView: UIView) {
         let borderWidth : CGFloat = 0.75
-        let borderColor = UIColor.lightGray.cgColor
+        let borderColor = UIColor.black.withAlphaComponent(0.4).cgColor
         myView.layer.cornerRadius = myView.bounds.height/2.0
         myView.layer.masksToBounds = true
-        myView.layer.borderWidth = borderWidth
-        myView.layer.borderColor = borderColor
+        if myView.backgroundColor != UIColor.clear {
+            //myView.layer.borderWidth = borderWidth
+            //myView.layer.borderColor = borderColor
+        }
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
@@ -153,7 +160,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        openMarkInfoView(withName: (view.annotation?.title!)!)
+        if !(view.annotation!.title!!.isEmpty) && (view.annotation?.title)! != "My Location" {
+            openMarkInfoView(withName: (view.annotation?.title!)!)
+        }
+        
     }
     
     @IBAction func mapViewPressed(_ sender: UILongPressGestureRecognizer) {
@@ -293,6 +303,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             closeMarkCreateView()
             placeAnnotation(mark: mark)
             userData.editMark(oldName: oldMark, newMark: mark)
+            loadSavedMarks()
+            selectedAnnotation = nil
         } else if userData.markDoesExist(markName: mark.title) {
             let alert = UIAlertController(title: "oops!", message: "You already have a location with that name!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
