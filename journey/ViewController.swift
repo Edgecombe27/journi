@@ -22,7 +22,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet var markCreateView: UIView!
     @IBOutlet var markTitleTextField: UITextField!
     @IBOutlet var mapPressRecognizer: UILongPressGestureRecognizer!
-    @IBOutlet var textFieldContainerView: UIView!
     @IBOutlet var markInfoView: UIView!
     @IBOutlet var markInfoLabel: UILabel!
     @IBOutlet var infoDeleteButton: UIButton!
@@ -57,7 +56,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         roundView(myView: locationButton)
         roundView(myView: saveButton)
         roundView(myView: cancelButton)
-        roundView(myView: textFieldContainerView)
+        roundView(myView: markCreateView)
         roundView(myView: markInfoView)
         roundView(myView: infoDeleteButton)
         roundView(myView: infoEditButton)
