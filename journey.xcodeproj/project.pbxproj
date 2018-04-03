@@ -16,56 +16,19 @@
 		FB27DF78204DD87A00FFC649 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB27DF77204DD87A00FFC649 /* UserData.swift */; };
 		FB27DF7A204EDC0400FFC649 /* Mark.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB27DF79204EDC0400FFC649 /* Mark.swift */; };
 		FB27DF7C204F195C00FFC649 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB27DF7B204F195C00FFC649 /* UIColor.swift */; };
-		FBE96A4E2051B84D004EDF93 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBE96A4C2051B84D004EDF93 /* Interface.storyboard */; };
-		FBE96A502051B84D004EDF93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBE96A4F2051B84D004EDF93 /* Assets.xcassets */; };
-		FBE96A572051B84D004EDF93 /* journi wear Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FBE96A562051B84D004EDF93 /* journi wear Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		FBE96A5C2051B84D004EDF93 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE96A5B2051B84D004EDF93 /* InterfaceController.swift */; };
-		FBE96A5E2051B84D004EDF93 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE96A5D2051B84D004EDF93 /* ExtensionDelegate.swift */; };
-		FBE96A602051B84D004EDF93 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE96A5F2051B84D004EDF93 /* NotificationController.swift */; };
-		FBE96A622051B84D004EDF93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBE96A612051B84D004EDF93 /* Assets.xcassets */; };
-		FBE96A672051B84D004EDF93 /* journi wear.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = FBE96A4A2051B84D004EDF93 /* journi wear.app */; };
 		FBF3DB2E2050807700AB95C3 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3DB2C2050807700AB95C3 /* MenuViewController.swift */; };
 		FBF3DB2F2050807700AB95C3 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBF3DB2D2050807700AB95C3 /* MenuViewController.xib */; };
 		FBF3DB32205082BA00AB95C3 /* LocationCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3DB30205082BA00AB95C3 /* LocationCellView.swift */; };
 		FBF3DB33205082BA00AB95C3 /* LocationCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBF3DB31205082BA00AB95C3 /* LocationCellView.xib */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		FBE96A582051B84D004EDF93 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FB27DF57204DCEF000FFC649 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FBE96A552051B84D004EDF93;
-			remoteInfo = "journi wear Extension";
-		};
-		FBE96A652051B84D004EDF93 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FB27DF57204DCEF000FFC649 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FBE96A492051B84D004EDF93;
-			remoteInfo = "journi wear";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
-		FBE96A6D2051B84D004EDF93 /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				FBE96A572051B84D004EDF93 /* journi wear Extension.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		FBE96A6F2051B84D004EDF93 /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				FBE96A672051B84D004EDF93 /* journi wear.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,17 +47,6 @@
 		FB27DF77204DD87A00FFC649 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		FB27DF79204EDC0400FFC649 /* Mark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mark.swift; sourceTree = "<group>"; };
 		FB27DF7B204F195C00FFC649 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		FBE96A4A2051B84D004EDF93 /* journi wear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "journi wear.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FBE96A4D2051B84D004EDF93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		FBE96A4F2051B84D004EDF93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		FBE96A512051B84D004EDF93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FBE96A562051B84D004EDF93 /* journi wear Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "journi wear Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FBE96A5B2051B84D004EDF93 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
-		FBE96A5D2051B84D004EDF93 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
-		FBE96A5F2051B84D004EDF93 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
-		FBE96A612051B84D004EDF93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		FBE96A632051B84D004EDF93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FBE96A642051B84D004EDF93 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		FBF3DB2C2050807700AB95C3 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		FBF3DB2D2050807700AB95C3 /* MenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
 		FBF3DB30205082BA00AB95C3 /* LocationCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCellView.swift; sourceTree = "<group>"; };
@@ -109,13 +61,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FBE96A532051B84D004EDF93 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -123,8 +68,6 @@
 			isa = PBXGroup;
 			children = (
 				FB27DF61204DCEF100FFC649 /* journey */,
-				FBE96A4B2051B84D004EDF93 /* journi wear */,
-				FBE96A5A2051B84D004EDF93 /* journi wear Extension */,
 				FB27DF60204DCEF100FFC649 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -133,8 +76,6 @@
 			isa = PBXGroup;
 			children = (
 				FB27DF5F204DCEF100FFC649 /* journey.app */,
-				FBE96A4A2051B84D004EDF93 /* journi wear.app */,
-				FBE96A562051B84D004EDF93 /* journi wear Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -160,29 +101,6 @@
 			path = journey;
 			sourceTree = "<group>";
 		};
-		FBE96A4B2051B84D004EDF93 /* journi wear */ = {
-			isa = PBXGroup;
-			children = (
-				FBE96A4C2051B84D004EDF93 /* Interface.storyboard */,
-				FBE96A4F2051B84D004EDF93 /* Assets.xcassets */,
-				FBE96A512051B84D004EDF93 /* Info.plist */,
-			);
-			path = "journi wear";
-			sourceTree = "<group>";
-		};
-		FBE96A5A2051B84D004EDF93 /* journi wear Extension */ = {
-			isa = PBXGroup;
-			children = (
-				FBE96A5B2051B84D004EDF93 /* InterfaceController.swift */,
-				FBE96A5D2051B84D004EDF93 /* ExtensionDelegate.swift */,
-				FBE96A5F2051B84D004EDF93 /* NotificationController.swift */,
-				FBE96A612051B84D004EDF93 /* Assets.xcassets */,
-				FBE96A632051B84D004EDF93 /* Info.plist */,
-				FBE96A642051B84D004EDF93 /* PushNotificationPayload.apns */,
-			);
-			path = "journi wear Extension";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -198,46 +116,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				FBE96A662051B84D004EDF93 /* PBXTargetDependency */,
 			);
 			name = journey;
 			productName = journey;
 			productReference = FB27DF5F204DCEF100FFC649 /* journey.app */;
 			productType = "com.apple.product-type.application";
-		};
-		FBE96A492051B84D004EDF93 /* journi wear */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FBE96A6E2051B84D004EDF93 /* Build configuration list for PBXNativeTarget "journi wear" */;
-			buildPhases = (
-				FBE96A482051B84D004EDF93 /* Resources */,
-				FBE96A6D2051B84D004EDF93 /* Embed App Extensions */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				FBE96A592051B84D004EDF93 /* PBXTargetDependency */,
-			);
-			name = "journi wear";
-			productName = "journi wear";
-			productReference = FBE96A4A2051B84D004EDF93 /* journi wear.app */;
-			productType = "com.apple.product-type.application.watchapp2";
-		};
-		FBE96A552051B84D004EDF93 /* journi wear Extension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FBE96A6C2051B84D004EDF93 /* Build configuration list for PBXNativeTarget "journi wear Extension" */;
-			buildPhases = (
-				FBE96A522051B84D004EDF93 /* Sources */,
-				FBE96A532051B84D004EDF93 /* Frameworks */,
-				FBE96A542051B84D004EDF93 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "journi wear Extension";
-			productName = "journi wear Extension";
-			productReference = FBE96A562051B84D004EDF93 /* journi wear Extension.appex */;
-			productType = "com.apple.product-type.watchkit2-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -251,20 +134,12 @@
 				TargetAttributes = {
 					FB27DF5E204DCEF100FFC649 = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
 							};
 						};
-					};
-					FBE96A492051B84D004EDF93 = {
-						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
-					};
-					FBE96A552051B84D004EDF93 = {
-						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -282,8 +157,6 @@
 			projectRoot = "";
 			targets = (
 				FB27DF5E204DCEF100FFC649 /* journey */,
-				FBE96A492051B84D004EDF93 /* journi wear */,
-				FBE96A552051B84D004EDF93 /* journi wear Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -298,23 +171,6 @@
 				FB27DF6D204DCEF100FFC649 /* Assets.xcassets in Resources */,
 				FB27DF68204DCEF100FFC649 /* Main.storyboard in Resources */,
 				FBF3DB2F2050807700AB95C3 /* MenuViewController.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FBE96A482051B84D004EDF93 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FBE96A502051B84D004EDF93 /* Assets.xcassets in Resources */,
-				FBE96A4E2051B84D004EDF93 /* Interface.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FBE96A542051B84D004EDF93 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FBE96A622051B84D004EDF93 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,30 +192,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FBE96A522051B84D004EDF93 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FBE96A602051B84D004EDF93 /* NotificationController.swift in Sources */,
-				FBE96A5E2051B84D004EDF93 /* ExtensionDelegate.swift in Sources */,
-				FBE96A5C2051B84D004EDF93 /* InterfaceController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		FBE96A592051B84D004EDF93 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = FBE96A552051B84D004EDF93 /* journi wear Extension */;
-			targetProxy = FBE96A582051B84D004EDF93 /* PBXContainerItemProxy */;
-		};
-		FBE96A662051B84D004EDF93 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = FBE96A492051B84D004EDF93 /* journi wear */;
-			targetProxy = FBE96A652051B84D004EDF93 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		FB27DF66204DCEF100FFC649 /* Main.storyboard */ = {
@@ -376,14 +209,6 @@
 				FB27DF6F204DCEF100FFC649 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		FBE96A4C2051B84D004EDF93 /* Interface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FBE96A4D2051B84D004EDF93 /* Base */,
-			);
-			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -500,16 +325,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = DB85A83894;
 				INFOPLIST_FILE = journey/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fwtio.journey;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "fd21f68b-eca2-4d79-ab49-502694e4a340";
+				PROVISIONING_PROFILE_SPECIFIER = "journey App Store Distribution";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -519,92 +344,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = DB85A83894;
 				INFOPLIST_FILE = journey/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fwtio.journey;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "fd21f68b-eca2-4d79-ab49-502694e4a340";
+				PROVISIONING_PROFILE_SPECIFIER = "journey App Store Distribution";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
-		FBE96A682051B84D004EDF93 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DB85A83894;
-				IBSC_MODULE = journi_wear_Extension;
-				INFOPLIST_FILE = "journi wear/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.fwtio.journey.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
-			};
-			name = Debug;
-		};
-		FBE96A692051B84D004EDF93 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DB85A83894;
-				IBSC_MODULE = journi_wear_Extension;
-				INFOPLIST_FILE = "journi wear/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.fwtio.journey.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
-			};
-			name = Release;
-		};
-		FBE96A6A2051B84D004EDF93 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DB85A83894;
-				INFOPLIST_FILE = "journi wear Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.fwtio.journey.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
-			};
-			name = Debug;
-		};
-		FBE96A6B2051B84D004EDF93 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DB85A83894;
-				INFOPLIST_FILE = "journi wear Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.fwtio.journey.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Release;
 		};
@@ -625,24 +376,6 @@
 			buildConfigurations = (
 				FB27DF75204DCEF100FFC649 /* Debug */,
 				FB27DF76204DCEF100FFC649 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		FBE96A6C2051B84D004EDF93 /* Build configuration list for PBXNativeTarget "journi wear Extension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FBE96A6A2051B84D004EDF93 /* Debug */,
-				FBE96A6B2051B84D004EDF93 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		FBE96A6E2051B84D004EDF93 /* Build configuration list for PBXNativeTarget "journi wear" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FBE96A682051B84D004EDF93 /* Debug */,
-				FBE96A692051B84D004EDF93 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

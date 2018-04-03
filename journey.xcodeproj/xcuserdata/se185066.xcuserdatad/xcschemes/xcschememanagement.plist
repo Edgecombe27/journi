@@ -9,15 +9,18 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>journi wear (Notification).xcscheme</key>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>FB27DF5E204DCEF100FFC649</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
+			<key>primary</key>
+			<true/>
 		</dict>
-		<key>journi wear.xcscheme</key>
+		<key>FBE96A492051B84D004EDF93</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
