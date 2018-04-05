@@ -37,7 +37,7 @@
                                     <constraint firstAttribute="height" constant="40" id="s3h-8K-jSU"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="O">
+                                <state key="normal" backgroundImage="destruct-logo.001">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -52,7 +52,7 @@
                                     <constraint firstAttribute="width" secondItem="x26-jc-rJ5" secondAttribute="height" multiplier="1:1" id="to2-bR-o1d"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="O">
+                                <state key="normal" backgroundImage="edit-logo.001">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -92,4 +92,8 @@
             <point key="canvasLocation" x="59" y="81"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="destruct-logo.001" width="2048" height="2048"/>
+        <image name="edit-logo.001" width="2048" height="2048"/>
+    </resources>
 </document>
