@@ -32,7 +32,7 @@
                     </connections>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kNr-Tn-jbb">
-                    <rect key="frame" x="16" y="28" width="275" height="60"/>
+                    <rect key="frame" x="16" y="28" width="274" height="60"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Locations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="au8-2F-0hc">
                             <rect key="frame" x="24" y="18" width="117" height="24"/>
@@ -48,14 +48,14 @@
                         <constraint firstAttribute="height" constant="60" id="nkb-MN-LwX"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1z-WP-pRP">
-                    <rect key="frame" x="299" y="28" width="60" height="60"/>
+                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1z-WP-pRP">
+                    <rect key="frame" x="298" y="27.5" width="61" height="61"/>
                     <color key="backgroundColor" red="0.96078431369999995" green="0.25098039220000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="p1z-WP-pRP" secondAttribute="height" multiplier="1:1" id="kgV-La-4QF"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                    <state key="normal" title="O">
+                    <state key="normal" backgroundImage="destruct-logo.001">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -70,7 +70,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="kNr-Tn-jbb" secondAttribute="top" constant="-8" id="DHI-eW-yAS"/>
                 <constraint firstItem="SDa-8b-Tjd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="P6Z-KB-sTj"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="SDa-8b-Tjd" secondAttribute="trailing" id="Uec-UZ-F7f"/>
-                <constraint firstItem="p1z-WP-pRP" firstAttribute="height" secondItem="kNr-Tn-jbb" secondAttribute="height" id="XEk-SE-8HL"/>
+                <constraint firstItem="p1z-WP-pRP" firstAttribute="height" secondItem="kNr-Tn-jbb" secondAttribute="height" constant="1" id="XEk-SE-8HL"/>
                 <constraint firstItem="p1z-WP-pRP" firstAttribute="leading" secondItem="kNr-Tn-jbb" secondAttribute="trailing" constant="8" id="gld-vD-fYW"/>
                 <constraint firstItem="SDa-8b-Tjd" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="kGy-BO-ZW4"/>
                 <constraint firstItem="SDa-8b-Tjd" firstAttribute="top" secondItem="kNr-Tn-jbb" secondAttribute="bottom" constant="8" id="m1P-oR-kRc"/>
@@ -80,4 +80,7 @@
             <point key="canvasLocation" x="33.5" y="54.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="destruct-logo.001" width="2048" height="2048"/>
+    </resources>
 </document>

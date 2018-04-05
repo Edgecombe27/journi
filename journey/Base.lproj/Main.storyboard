@@ -32,7 +32,7 @@
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RiP-b9-e66">
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RiP-b9-e66">
                                         <rect key="frame" x="303" y="10" width="40" height="40"/>
                                         <color key="backgroundColor" red="0.96078431369999995" green="0.25098039220000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
@@ -40,22 +40,21 @@
                                             <constraint firstAttribute="width" secondItem="RiP-b9-e66" secondAttribute="height" multiplier="1:1" id="rcA-Aq-wef"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <state key="normal" title="O">
+                                        <state key="normal" backgroundImage="destruct-logo.001">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="infoDeleteTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hiS-pu-iuT"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wWM-u3-HhN">
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wWM-u3-HhN">
                                         <rect key="frame" x="255" y="10" width="40" height="40"/>
                                         <color key="backgroundColor" red="0.20784313730000001" green="0.47058823529999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="wWM-u3-HhN" secondAttribute="height" multiplier="1:1" id="S4B-1W-QQZ"/>
                                             <constraint firstAttribute="height" constant="40" id="wNc-AL-90r"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <state key="normal" title="O">
+                                        <state key="normal" image="edit-logo.001">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -93,14 +92,14 @@
                                             <action selector="locationTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JEC-Zt-HVR"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FFx-Zp-sTF">
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FFx-Zp-sTF">
                                         <rect key="frame" x="196.5" y="4" width="63" height="62"/>
                                         <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="FFx-Zp-sTF" secondAttribute="height" multiplier="1:1" constant="1" id="4PS-XW-uer"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                        <state key="normal" title="O">
+                                        <state key="normal" backgroundImage="mark-icon-small.001">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -108,14 +107,14 @@
                                             <action selector="markTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BXp-n7-sxe"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9L-ug-W3h">
+                                    <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9L-ug-W3h">
                                         <rect key="frame" x="0.0" y="4" width="63" height="62"/>
                                         <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="g9L-ug-W3h" secondAttribute="height" multiplier="1:1" constant="1" id="9gO-59-RTR"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                        <state key="normal" title="III">
+                                        <state key="normal" backgroundImage="menu-icon.001">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" red="0.40000000600000002" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -140,21 +139,21 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SMA-eI-f7p">
                                 <rect key="frame" x="8" y="20" width="359" height="60"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0c-yZ-K7f">
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0c-yZ-K7f">
                                         <rect key="frame" x="263" y="9.5" width="40.5" height="40"/>
                                         <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="g0c-yZ-K7f" secondAttribute="height" multiplier="1:1" id="635-9S-Fog"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <state key="normal" title="O">
+                                        <state key="normal" backgroundImage="check-logo-2.001">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="saveTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WsQ-jf-PFo"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nIg-7H-pIN">
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nIg-7H-pIN">
                                         <rect key="frame" x="311" y="10" width="40" height="40"/>
                                         <color key="backgroundColor" red="0.96078431369999995" green="0.25098039220000001" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
@@ -162,7 +161,7 @@
                                             <constraint firstAttribute="width" constant="40" id="jtd-Sj-BVG"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <state key="normal" title="O">
+                                        <state key="normal" backgroundImage="destruct-logo.001">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -241,4 +240,11 @@
             <point key="canvasLocation" x="140" y="133.5832083958021"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="check-logo-2.001" width="2048" height="2048"/>
+        <image name="destruct-logo.001" width="2048" height="2048"/>
+        <image name="edit-logo.001" width="2048" height="2048"/>
+        <image name="mark-icon-small.001" width="2048" height="2048"/>
+        <image name="menu-icon.001" width="2048" height="2048"/>
+    </resources>
 </document>
