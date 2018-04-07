@@ -37,7 +37,7 @@
                                     <constraint firstAttribute="height" constant="40" id="s3h-8K-jSU"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" backgroundImage="destruct-logo.001">
+                                <state key="normal" backgroundImage="destructive-logo-2.001">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -93,7 +93,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="destruct-logo.001" width="2048" height="2048"/>
+        <image name="destructive-logo-2.001" width="1024" height="1024"/>
         <image name="edit-logo.001" width="2048" height="2048"/>
     </resources>
 </document>

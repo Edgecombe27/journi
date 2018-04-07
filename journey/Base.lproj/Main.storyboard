@@ -19,8 +19,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pHX-Iv-Tka">
-                                <rect key="frame" x="0.0" y="20" width="375" height="667"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pHX-Iv-Tka">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wxP-5w-TwB">
@@ -40,7 +40,7 @@
                                             <constraint firstAttribute="width" secondItem="RiP-b9-e66" secondAttribute="height" multiplier="1:1" id="rcA-Aq-wef"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <state key="normal" backgroundImage="destruct-logo.001">
+                                        <state key="normal" backgroundImage="destructive-logo-2.001">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -76,6 +76,13 @@
                                     <constraint firstItem="wWM-u3-HhN" firstAttribute="centerY" secondItem="RiP-b9-e66" secondAttribute="centerY" id="xL0-NL-ZAM"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUv-bs-CWg">
+                                <rect key="frame" x="0.0" y="565" width="375" height="147"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8uF-rk-cpb">
                                 <rect key="frame" x="56" y="589" width="263.5" height="70"/>
                                 <subviews>
@@ -162,7 +169,7 @@
                                             <constraint firstAttribute="width" constant="40" id="jtd-Sj-BVG"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <state key="normal" backgroundImage="destruct-logo.001">
+                                        <state key="normal" backgroundImage="destructive-logo-2.001">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -199,10 +206,13 @@
                             <constraint firstItem="SMA-eI-f7p" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="EIm-Re-72k"/>
                             <constraint firstItem="wxP-5w-TwB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="In7-dj-2Cz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8uF-rk-cpb" secondAttribute="bottom" constant="8" id="JqW-Hn-mBk"/>
+                            <constraint firstItem="LUv-bs-CWg" firstAttribute="top" secondItem="8uF-rk-cpb" secondAttribute="top" constant="-24" id="M83-Dc-g4s"/>
                             <constraint firstItem="SMA-eI-f7p" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="MHQ-z1-2z6"/>
                             <constraint firstItem="pHX-Iv-Tka" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="PO3-iw-4fh"/>
+                            <constraint firstItem="LUv-bs-CWg" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="SAA-Ev-XUf"/>
                             <constraint firstItem="pHX-Iv-Tka" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="SGY-nR-GYv"/>
                             <constraint firstItem="pHX-Iv-Tka" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="ZBc-eS-rUM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="LUv-bs-CWg" secondAttribute="bottom" constant="-45" id="gD0-Pu-HKD"/>
                             <constraint firstItem="wxP-5w-TwB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="jRz-Vq-qjN"/>
                             <constraint firstItem="pHX-Iv-Tka" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="l1l-kL-whN"/>
                             <constraint firstItem="8uF-rk-cpb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="loy-iK-hTt"/>
@@ -210,6 +220,7 @@
                             <constraint firstItem="wxP-5w-TwB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="oSm-VR-aw2"/>
                             <constraint firstItem="SMA-eI-f7p" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="p2K-QX-GTM"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wxP-5w-TwB" secondAttribute="trailing" constant="8" id="qjH-Vc-zOF"/>
+                            <constraint firstItem="LUv-bs-CWg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="slY-9Y-t2A"/>
                             <constraint firstItem="8uF-rk-cpb" firstAttribute="width" secondItem="pHX-Iv-Tka" secondAttribute="width" multiplier="0.7" constant="1" id="tsz-V9-p9b"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -220,6 +231,7 @@
                         <outlet property="infoDeleteButton" destination="RiP-b9-e66" id="sqY-LU-hqM"/>
                         <outlet property="infoEditButton" destination="wWM-u3-HhN" id="Ru9-n1-PSa"/>
                         <outlet property="locationButton" destination="wsZ-Vu-kfv" id="5cR-WD-BB9"/>
+                        <outlet property="mapGradientView" destination="LUv-bs-CWg" id="2xz-Id-NUj"/>
                         <outlet property="mapPressRecognizer" destination="Fi9-Cg-MSG" id="Kr9-wF-tBh"/>
                         <outlet property="markButton" destination="FFx-Zp-sTF" id="4q0-vi-lul"/>
                         <outlet property="markCreateView" destination="SMA-eI-f7p" id="iYH-qr-tOV"/>
@@ -243,7 +255,7 @@
     </scenes>
     <resources>
         <image name="check-logo-2.001" width="2048" height="2048"/>
-        <image name="destruct-logo.001" width="2048" height="2048"/>
+        <image name="destructive-logo-2.001" width="1024" height="1024"/>
         <image name="edit-logo.001" width="2048" height="2048"/>
         <image name="mark-icon-small.001" width="2048" height="2048"/>
         <image name="menu-icon.001" width="2048" height="2048"/>
