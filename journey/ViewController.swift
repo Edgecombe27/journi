@@ -27,6 +27,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet var infoDeleteButton: UIButton!
     @IBOutlet var infoEditButton: UIButton!
     @IBOutlet var toolbarView: UIView!
+    @IBOutlet var mapGradientView: UILabel!
     
     var session : WCSession!
     var mapView: MKMapView!
@@ -64,7 +65,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         toolbarView.backgroundColor = UIColor.clear//.lightGray.withAlphaComponent(0)
         
+        let gradient = CAGradientLayer()
+        gradient.frame = mapGradientView.bounds
         
+        gradient.colors = [UIColor.clear.withAlphaComponent(0).cgColor, UIColor.black.withAlphaComponent(0.75).cgColor]
+        mapGradientView.layer.insertSublayer(gradient, at: 0)
         if (WCSession.isSupported()) {
             session = WCSession.default
             session.delegate = self;
