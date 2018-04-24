@@ -33,7 +33,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     var locationManager: CLLocationManager!
     var rightViewExtended = false
     var textColor : UIColor!
-    var userLocation : CLLocation!
+    var userLocation = CLLocation()
     var userData : UserData!
     var savedMarks : [Mark]!
     var longPress : UILongPressGestureRecognizer!

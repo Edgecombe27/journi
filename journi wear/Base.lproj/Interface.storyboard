@@ -17,14 +17,14 @@
                         <map height="0.80000000000000004" alignment="left" id="eaN-Qx-Aks"/>
                         <group width="1" height="0.20000000000000001" alignment="left" id="ehZ-Dk-lyr">
                             <items>
-                                <button width="0.5" height="1" alignment="left" title="|||" id="rTg-gv-RL3">
+                                <button width="0.5" height="1" alignment="left" backgroundImage="menu-icon.001" id="rTg-gv-RL3">
                                     <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="font" type="system" pointSize="30"/>
                                     <connections>
                                         <action selector="locationTapped" destination="AgC-eL-Hgc" id="Qe8-Iw-DZN"/>
                                     </connections>
                                 </button>
-                                <button width="0.5" height="1" alignment="left" title="O" id="um6-MB-5hv">
+                                <button width="0.5" height="1" alignment="left" backgroundImage="mark-icon-small.001" id="um6-MB-5hv">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="font" type="system" pointSize="30"/>
@@ -36,7 +36,9 @@
                         </group>
                     </items>
                     <connections>
+                        <outlet property="locationButton" destination="rTg-gv-RL3" id="HZq-sb-k8B"/>
                         <outlet property="mapView" destination="eaN-Qx-Aks" id="MZC-bJ-XdX"/>
+                        <outlet property="markButton" destination="um6-MB-5hv" id="VUd-Ss-zeK"/>
                     </connections>
                 </controller>
             </objects>

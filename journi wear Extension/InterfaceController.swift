@@ -14,6 +14,8 @@ import WatchConnectivity
 class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, WCSessionDelegate {
     
 
+    @IBOutlet var locationButton: WKInterfaceButton!
+    @IBOutlet var markButton: WKInterfaceButton!
     @IBOutlet var mapView: WKInterfaceMap!
     var mapLocation : CLLocationCoordinate2D?
     var locationManager = CLLocationManager()
@@ -28,6 +30,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate, WCS
             session.delegate = self
             session.activate()
         }
+        
         
         locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
