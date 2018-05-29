@@ -15,14 +15,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     
     @IBOutlet var contentView: UIView!
-    @IBOutlet var markButton: UIButton!
-    @IBOutlet var menuButton: UIButton!
-    @IBOutlet var locationButton: UIButton!
-    @IBOutlet var saveButton: UIButton!
-    @IBOutlet var cancelButton: UIButton!
-    @IBOutlet var markCreateView: UIView!
-    @IBOutlet var markTitleTextField: UITextField!
-    @IBOutlet var mapPressRecognizer: UILongPressGestureRecognizer!
     
     var mapView: MKMapView!
     var locationManager: CLLocationManager!
@@ -40,29 +32,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let borderWidth : CGFloat = 0.75
-        let borderColor = UIColor.lightGray.cgColor
-        
-        markButton.layer.cornerRadius = markButton.bounds.height/2.0
-        markButton.layer.masksToBounds = true
-        markButton.layer.borderWidth = borderWidth
-        markButton.layer.borderColor = borderColor
-        menuButton.layer.cornerRadius = menuButton.bounds.height/2.0
-        menuButton.layer.masksToBounds = true
-        menuButton.layer.borderWidth = borderWidth
-        menuButton.layer.borderColor = borderColor
-        locationButton.layer.cornerRadius = locationButton.bounds.height/2.0
-        locationButton.layer.masksToBounds = true
-        locationButton.layer.borderWidth = borderWidth
-        locationButton.layer.borderColor = borderColor
-        saveButton.layer.cornerRadius = saveButton.bounds.height/2.0
-        saveButton.layer.masksToBounds = true
-        saveButton.layer.borderWidth = borderWidth
-        saveButton.layer.borderColor = borderColor
-        cancelButton.layer.cornerRadius = cancelButton.bounds.height/2.0
-        cancelButton.layer.masksToBounds = true
-        cancelButton.layer.borderWidth = borderWidth
-        cancelButton.layer.borderColor = borderColor
         
         userLocation = CLLocation(latitude: CLLocationDegrees(exactly: 0)!, longitude: CLLocationDegrees(exactly: 0)!)
         
@@ -92,7 +61,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         mapView.delegate = self
         mapView.showsUserLocation = true
         mapView.mapType = MKMapType.standard
-        mapView.addGestureRecognizer(mapPressRecognizer)
         contentView.addSubview(mapView)
         loadSavedMarks()
     }
@@ -120,7 +88,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             let location = mapView.convert(sender.location(in: mapView), toCoordinateFrom: mapView)
                 placeAnnotation(mark: Mark(title: "", subtitle: "", latitude: location.latitude, longitude: location.longitude))
             focusOnLocation(latitude: location.latitude, longitude: location.longitude)
-                openMarkCreateView()
             guesturePerforming = false
         }
     }
@@ -163,65 +130,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         print("Error \(error)")
     }
     
-    @IBAction func markTapped(_ sender: Any) {
-        if CLLocationManager.locationServicesEnabled() {
-            placeAnnotation(mark: Mark(title: "", subtitle: "", latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude))
-            openMarkCreateView()
-        }
-    }
-    
-    @IBAction func menuTapped(_ sender: Any) {
-        let menu = MenuViewController()
-        menu.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        menu.myLocations = savedMarks
-        menu.viewController = self
-        present(menu, animated: true, completion: nil)
-    }
-    
-    @IBAction func locationTapped(_ sender: Any) {
-        determineCurrentLocation()
-    }
-    
-    @IBAction func saveTapped(_ sender: Any) {
-        let mark = Mark(title: markTitleTextField.text!, subtitle: "", latitude: selectedAnnotation.coordinate.latitude, longitude: selectedAnnotation.coordinate.longitude)
-        closeMarkCreateView()
-        placeAnnotation(mark: mark)
-        userData.saveMark(mark: mark)
-        savedMarks.append(mark)
-        selectedAnnotation = nil
-    }
-    
-    @IBAction func cancelTapped(_ sender: Any) {
-        closeMarkCreateView()
-        if selectedAnnotation != nil {
-            mapView.removeAnnotation(selectedAnnotation)
-        }
-    }
-    
-    func closeMarkCreateView() {
-        markTitleTextField.resignFirstResponder()
-        markTitleTextField.text = ""
-        UIView.animate(withDuration: 0.335, animations: {
-            self.markCreateView.alpha = 0
-        }, completion: { (flag) in
-            self.markCreateView.isHidden = true
-        })
-        isCreating = false
-    }
-    
-    func openMarkCreateView() {
-        self.markCreateView.alpha = 0
-        markCreateView.isHidden = false
-        isCreating = true
-        UIView.animate(withDuration: 0.35, animations: {
-            self.markCreateView.alpha = 1
-        }, completion: { (flag) in
-            self.markTitleTextField.becomeFirstResponder()
-        })
-    }
-    
-    
-    
+  
 }
 
 
