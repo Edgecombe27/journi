@@ -15,6 +15,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     
     @IBOutlet var contentView: UIView!
+
+    @IBOutlet var mapPressRecognizer: UILongPressGestureRecognizer!
     
     var mapView: MKMapView!
     var locationManager: CLLocationManager!
@@ -27,11 +29,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     var selectedAnnotation : MKAnnotation!
     var isCreating = false
     var guesturePerforming = false
-    
+    var locations : [CLLocationCoordinate2D] = []
+    @IBOutlet var tapGestureRecognizer: UITapGestureRecognizer!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
         
         userLocation = CLLocation(latitude: CLLocationDegrees(exactly: 0)!, longitude: CLLocationDegrees(exactly: 0)!)
         
@@ -55,12 +57,15 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         determineCurrentLocation()
     }
     
+    
+    
     func createMapView()
     {
         mapView = MKMapView(frame: CGRect(x: 0, y: 0, width: view.bounds.size.width, height: view.bounds.size.height))
         mapView.delegate = self
         mapView.showsUserLocation = true
         mapView.mapType = MKMapType.standard
+        mapView.addGestureRecognizer(tapGestureRecognizer)
         contentView.addSubview(mapView)
         loadSavedMarks()
     }
@@ -82,6 +87,27 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         print("lol")
     }
     
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if !(annotation is MKPointAnnotation) {
+            return nil
+        }
+        
+        let annotationIdentifier = "AnnotationIdentifier"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier)
+        
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+            annotationView!.canShowCallout = true
+        }
+        else {
+            annotationView!.annotation = annotation
+        }
+        
+        let pinImage = UIImage(named: "blue.png")
+        annotationView!.image = pinImage
+        
+        return annotationView
+    }
     @IBAction func mapViewPressed(_ sender: UILongPressGestureRecognizer) {
         if !isCreating && !guesturePerforming{
             guesturePerforming = true
@@ -91,11 +117,24 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             guesturePerforming = false
         }
     }
+    @IBAction func mapViewTapped(_ sender: Any) {
+        let location = mapView.convert((sender as AnyObject).location(in: mapView), toCoordinateFrom: mapView)
+        locations.append(location)
+        placeAnnotation(mark: Mark(title: "", subtitle: "", latitude: location.latitude, longitude: location.longitude))
+    }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         userLocation = locations[0] as CLLocation
         focusOnLocation(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
         locationManager.stopUpdatingLocation()
+    }
+    
+    func printLocations() {
+        
+        for location in locations {
+            print("[\(location.latitude.description), \(location.longitude.description)]")
+        }
+        
     }
     
     func loadSavedMarks() {
@@ -130,7 +169,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         print("Error \(error)")
     }
     
-  
+   
+
+    
+    
+    
+    
+    
 }
 
 

@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>journi</string>
+	<string>MyHeatMap</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -23,9 +23,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Share your location to save the places you&apos;ve been! We do not share your location with anyone without your permission.</string>
+	<string>Share your location to save the places you've been! We do not share your location with anyone without your permission.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Share your location to save the places you&apos;ve been! We do not share your location with anyone without your permission.</string>
+	<string>Share your location to save the places you've been! We do not share your location with anyone without your permission.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

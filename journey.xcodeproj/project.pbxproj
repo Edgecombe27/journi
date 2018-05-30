@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE71467920BD9EB900D72B69 /* HeatMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE71467820BD9EB900D72B69 /* HeatMaker.swift */; };
 		FB27DF63204DCEF100FFC649 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB27DF62204DCEF100FFC649 /* AppDelegate.swift */; };
 		FB27DF65204DCEF100FFC649 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB27DF64204DCEF100FFC649 /* ViewController.swift */; };
 		FB27DF68204DCEF100FFC649 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB27DF66204DCEF100FFC649 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AE71467820BD9EB900D72B69 /* HeatMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatMaker.swift; sourceTree = "<group>"; };
 		FB27DF5F204DCEF100FFC649 /* journey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = journey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB27DF62204DCEF100FFC649 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB27DF64204DCEF100FFC649 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				FB27DF79204EDC0400FFC649 /* Mark.swift */,
 				FB27DF7B204F195C00FFC649 /* UIColor.swift */,
 				FB27DF66204DCEF100FFC649 /* Main.storyboard */,
+				AE71467820BD9EB900D72B69 /* HeatMaker.swift */,
 				FB27DF6C204DCEF100FFC649 /* Assets.xcassets */,
 				FB27DF6E204DCEF100FFC649 /* LaunchScreen.storyboard */,
 				FBF3DB2C2050807700AB95C3 /* MenuViewController.swift */,
@@ -165,6 +168,7 @@
 				FB27DF7A204EDC0400FFC649 /* Mark.swift in Sources */,
 				FBF3DB32205082BA00AB95C3 /* LocationCellView.swift in Sources */,
 				FB27DF7C204F195C00FFC649 /* UIColor.swift in Sources */,
+				AE71467920BD9EB900D72B69 /* HeatMaker.swift in Sources */,
 				FB27DF65204DCEF100FFC649 /* ViewController.swift in Sources */,
 				FBF3DB2E2050807700AB95C3 /* MenuViewController.swift in Sources */,
 				FB27DF6B204DCEF100FFC649 /* journey.xcdatamodeld in Sources */,
