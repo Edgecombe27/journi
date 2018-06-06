@@ -26,6 +26,10 @@
 	<string>Share your location to save the places you've been! We do not share your location with anyone without your permission.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Share your location to save the places you've been! We do not share your location with anyone without your permission.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

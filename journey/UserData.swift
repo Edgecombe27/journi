@@ -7,42 +7,60 @@
 //
 
 import Foundation
+import CoreLocation
 
 class UserData {
     
-    let USER_DATA_KEY = "user_data"
+    static let USER_DATA_KEY = "user_data"
     
-    var data : [String : Any]
+    var data : [String : [String : Any]] = [:]
     
-    init() {
+     init() {
         
-        if let savedData = UserDefaults.standard.persistentDomain(forName: USER_DATA_KEY)  {
-            data = savedData
+        if UserDefaults.standard.dictionary(forKey: UserData.USER_DATA_KEY) != nil {
+            data = UserDefaults.standard.dictionary(forKey: UserData.USER_DATA_KEY) as! [String : [String : Any]]
         } else {
             data = [:]
         }
         
     }
     
-    func saveMark(mark: Mark) {
-        data[mark.title] = [mark.subtitle, mark.latitude.description, mark.longitude.description]
-        UserDefaults.standard.setPersistentDomain(data, forName: USER_DATA_KEY)
+    func addLocation(location : CLLocationCoordinate2D) {
+        
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .full
+        
+        let value = ["time" : formatter.string(from: date), "latitude" : location.latitude.description, "longitude" : location.longitude.description] as [String : Any]
+        
+        let key = "\(data.count)"
+        
+        data[key] = value
+        
+        UserDefaults.standard.setValue(data, forKey: UserData.USER_DATA_KEY)
+        
     }
     
-    func deleteMark(withName: String) {
-        data[withName] = nil
-        UserDefaults.standard.setPersistentDomain(data, forName: USER_DATA_KEY)
-    }
-    
-    func getData() -> [Mark] {
+    func getLocationData() -> [Point] {
+        let values = Array(data.values) as! [[String : String]]
         
-        var result : [Mark] = []
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .full
         
-        for mark in data {
-            let value = mark.value as! [String]
-            result.append(Mark(title: mark.key, subtitle: value[0], latitude: value[1], longitude: value[2]))
+        var result : [Point] = []
+        
+        for point in values {
+            result.append(Point(time: formatter.date(from: point["time"]!)!, coordinates: CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: Double(point["latitude"]!)!)!, longitude: CLLocationDegrees(exactly: Double(point["longitude"]!)!)!)))
         }
+        
         return result
+        
+    }
+    
+    func deleteData() {
+        UserDefaults.standard.setValue([:], forKey: UserData.USER_DATA_KEY)
     }
     
 }

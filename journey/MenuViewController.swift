@@ -44,7 +44,6 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let mark = (tableView.cellForRow(at: indexPath) as! LocationCellView).mark
         self.dismiss(animated: true, completion: {
-            self.viewController.focusOnLocation(latitude: (mark?.latitude)!, longitude: (mark?.longitude)!)
         })
     }
     

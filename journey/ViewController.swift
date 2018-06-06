@@ -29,7 +29,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     var selectedAnnotation : MKAnnotation!
     var isCreating = false
     var guesturePerforming = false
-    var locations : [CLLocationCoordinate2D] = []
+    var locations : [Point] = []
     @IBOutlet var tapGestureRecognizer: UITapGestureRecognizer!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,13 +78,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         locationManager.requestAlwaysAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
-            //locationManager.startUpdatingHeading()
             locationManager.startUpdatingLocation()
+            locationManager.allowsBackgroundLocationUpdates = true
+            locationManager.startMonitoringVisits()
         }
-    }
-    
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        print("lol")
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -94,7 +91,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         let annotationIdentifier = "AnnotationIdentifier"
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier)
-        
         if annotationView == nil {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
             annotationView!.canShowCallout = true
@@ -109,58 +105,33 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         return annotationView
     }
     @IBAction func mapViewPressed(_ sender: UILongPressGestureRecognizer) {
-        if !isCreating && !guesturePerforming{
-            guesturePerforming = true
-            let location = mapView.convert(sender.location(in: mapView), toCoordinateFrom: mapView)
-                placeAnnotation(mark: Mark(title: "", subtitle: "", latitude: location.latitude, longitude: location.longitude))
-            focusOnLocation(latitude: location.latitude, longitude: location.longitude)
-            guesturePerforming = false
-        }
+        
     }
     @IBAction func mapViewTapped(_ sender: Any) {
-        let location = mapView.convert((sender as AnyObject).location(in: mapView), toCoordinateFrom: mapView)
-        locations.append(location)
-        placeAnnotation(mark: Mark(title: "", subtitle: "", latitude: location.latitude, longitude: location.longitude))
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         userLocation = locations[0] as CLLocation
-        focusOnLocation(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
-        locationManager.stopUpdatingLocation()
-    }
-    
-    func printLocations() {
-        
-        for location in locations {
-            print("[\(location.latitude.description), \(location.longitude.description)]")
-        }
-        
+        userData.addLocation(location: userLocation.coordinate)
     }
     
     func loadSavedMarks() {
         userData = UserData()
-        savedMarks = userData.getData()
-        
-        for mark in savedMarks {
-            placeAnnotation(mark: mark)
+        locations = userData.getLocationData()
+        for point in locations {
+            placeAnnotation(point: point)
         }
     }
     
-    func placeAnnotation(mark : Mark) {
-        
-        // Drop a pin at user's Current Location
+    func placeAnnotation(point : Point) {
         let myAnnotation: MKPointAnnotation = MKPointAnnotation()
-        myAnnotation.coordinate = CLLocationCoordinate2DMake(mark.latitude, mark.longitude);
-        myAnnotation.title = mark.title
-        myAnnotation.subtitle = mark.subtitle
-        selectedAnnotation = myAnnotation
+        myAnnotation.coordinate = point.coordinates
         mapView.addAnnotation(myAnnotation)
-        
     }
     
-    func focusOnLocation(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
-        let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+    func focusOnLocation(coordinates: CLLocationCoordinate2D) {
+        let region = MKCoordinateRegion(center: coordinates, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         mapView.setRegion(region, animated: true)
     }
     
