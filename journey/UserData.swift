@@ -11,23 +11,34 @@ import CoreLocation
 
 class UserData {
     
-    static let USER_DATA_KEY = "user_data"
-    
+    static let LOCATION_DATA_KEY = "location_data"
+    static let MONITORING_LOCATION_KEY = "user_data"
+
     var data : [String : [String : Any]] = [:]
+    
+    var isMonitoringLocation : Bool {
+        get {
+            if UserDefaults.standard.dictionary(forKey: UserData.MONITORING_LOCATION_KEY) != nil {
+                return UserDefaults.standard.bool(forKey: UserData.MONITORING_LOCATION_KEY)
+            } else {
+                UserDefaults.standard.set(true, forKey: UserData.MONITORING_LOCATION_KEY)
+                return true
+            }
+        }
+    }
     
      init() {
         
-        if UserDefaults.standard.dictionary(forKey: UserData.USER_DATA_KEY) != nil {
-            data = UserDefaults.standard.dictionary(forKey: UserData.USER_DATA_KEY) as! [String : [String : Any]]
+        if UserDefaults.standard.dictionary(forKey: UserData.LOCATION_DATA_KEY) != nil {
+            data = UserDefaults.standard.dictionary(forKey: UserData.LOCATION_DATA_KEY) as! [String : [String : Any]]
         } else {
             data = [:]
         }
         
     }
     
-    func addLocation(location : CLLocationCoordinate2D) {
+    func addLocation(date: Date, location : CLLocationCoordinate2D) {
         
-        let date = Date()
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.timeStyle = .full
@@ -38,7 +49,7 @@ class UserData {
         
         data[key] = value
         
-        UserDefaults.standard.setValue(data, forKey: UserData.USER_DATA_KEY)
+        UserDefaults.standard.setValue(data, forKey: UserData.LOCATION_DATA_KEY)
         
     }
     
@@ -59,8 +70,10 @@ class UserData {
         
     }
     
+    
+    
     func deleteData() {
-        UserDefaults.standard.setValue([:], forKey: UserData.USER_DATA_KEY)
+        UserDefaults.standard.setValue([:], forKey: UserData.LOCATION_DATA_KEY)
     }
     
 }

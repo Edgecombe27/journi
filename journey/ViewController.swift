@@ -14,6 +14,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
  
     
     
+    @IBOutlet weak var monitorSwitch: UISwitch!
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var infoView: UIView!
@@ -139,6 +140,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         infoView.isHidden = !infoView.isHidden
     }
     
+    @IBAction func monitorSwitchToggled(_ sender: Any) {
+        
+    }
     
     
     
