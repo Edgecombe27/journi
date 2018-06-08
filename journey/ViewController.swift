@@ -84,7 +84,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         if CLLocationManager.locationServicesEnabled() {
             locationManager.startUpdatingLocation()
             locationManager.allowsBackgroundLocationUpdates = true
-            locationManager.startMonitoringVisits()
+            locationManager.startMonitoringSignificantLocationChanges()
         }
     }
     
