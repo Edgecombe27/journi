@@ -14,20 +14,22 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
  
     
     
-    @IBOutlet weak var monitorSwitch: UISwitch!
+    @IBOutlet weak var locateButton: UIButton!
     @IBOutlet var contentView: UIView!
-    @IBOutlet weak var infoButton: UIButton!
-    @IBOutlet weak var infoView: UIView!
     
     var mapView: MKMapView!
     var locationManager: CLLocationManager!
     var userLocation : CLLocation!
     var userData : UserData!
     var locations : [Point] = []
+    var findingLocation = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        locateButton.layer.cornerRadius = locateButton.frame.height / 2.0
+        locateButton.layer.masksToBounds = true
         
         userLocation = CLLocation(latitude: CLLocationDegrees(exactly: 0)!, longitude: CLLocationDegrees(exactly: 0)!)
         
@@ -83,6 +85,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager.startUpdatingLocation()
+            findingLocation = true
             locationManager.allowsBackgroundLocationUpdates = true
             locationManager.startMonitoringSignificantLocationChanges()
         }
@@ -110,15 +113,21 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        userLocation = locations[0] as CLLocation
-        focusOnLocation(coordinates: userLocation.coordinate)
-        locationManager.stopUpdatingLocation()
+        if findingLocation {
+            userLocation = locations[0] as CLLocation
+            focusOnLocation(coordinates: userLocation.coordinate)
+            locationManager.stopUpdatingLocation()
+            findingLocation = false
+        } else {
+            userData.addLocation(location: locations[0].coordinate)
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didVisit visit: CLVisit) {
-        userData.addLocation(date: visit.arrivalDate,location: userLocation.coordinate)
+        userData.addLocation(location: userLocation.coordinate)
     }
     
+        
     func placeAnnotation(point : Point) {
         let myAnnotation: MKPointAnnotation = MKPointAnnotation()
         myAnnotation.coordinate = point.coordinates
@@ -136,13 +145,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
    
-    @IBAction func infoButtonPressed(_ sender: Any) {
-        infoView.isHidden = !infoView.isHidden
+    @IBAction func locateButtonPressed(_ sender: Any) {
+        findingLocation = true
+        locationManager.stopUpdatingLocation()
     }
     
-    @IBAction func monitorSwitchToggled(_ sender: Any) {
-        
-    }
     
     
     

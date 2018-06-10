@@ -37,8 +37,9 @@ class UserData {
         
     }
     
-    func addLocation(date: Date, location : CLLocationCoordinate2D) {
+    func addLocation(location : CLLocationCoordinate2D) {
         
+        let date = Date()
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.timeStyle = .full
