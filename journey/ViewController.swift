@@ -147,7 +147,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
    
     @IBAction func locateButtonPressed(_ sender: Any) {
         findingLocation = true
-        locationManager.stopUpdatingLocation()
+        locationManager.startUpdatingLocation()
     }
     
     
