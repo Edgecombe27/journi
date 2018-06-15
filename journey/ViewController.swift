@@ -14,8 +14,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
  
     
     
+    @IBOutlet weak var infoView: UIView!
     @IBOutlet weak var locateButton: UIButton!
     @IBOutlet var contentView: UIView!
+    
+    private let FIRST_TIME = "first_time"
     
     var mapView: MKMapView!
     var locationManager: CLLocationManager!
@@ -32,6 +35,15 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         locateButton.layer.masksToBounds = true
         
         userLocation = CLLocation(latitude: CLLocationDegrees(exactly: 0)!, longitude: CLLocationDegrees(exactly: 0)!)
+        infoView.layer.cornerRadius = 10
+        infoView.layer.masksToBounds = true
+        
+        if UserDefaults.standard.value(forKey: FIRST_TIME) != nil {
+            infoView.isHidden = true
+        } else {
+            infoView.isHidden = false
+            UserDefaults.standard.set(true, forKey: FIRST_TIME)
+        }
         
     }
     
@@ -45,6 +57,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         // Create and Add MapView to our main view
         createMapView()
+        userData = UserData()
         loadLocations()
     }
     
@@ -87,7 +100,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             locationManager.startUpdatingLocation()
             findingLocation = true
             locationManager.allowsBackgroundLocationUpdates = true
-            locationManager.startMonitoringSignificantLocationChanges()
+            locationManager.startMonitoringVisits()
         }
     }
     
@@ -119,7 +132,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             locationManager.stopUpdatingLocation()
             findingLocation = false
         } else {
-            userData.addLocation(location: locations[0].coordinate)
+            //userData.addLocation(location: locations[0].coordinate)
         }
     }
     
@@ -151,7 +164,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     
+    @IBAction func infoCloseButtonPressed(_ sender: Any) {
+        infoView.isHidden = true
+    }
     
+    @IBAction func infoButtonPressed(_ sender: Any) {
+        infoView.isHidden = !infoView.isHidden
+    }
     
     
     

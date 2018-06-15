@@ -23,32 +23,78 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZE1-p2-Zw3">
-                                <rect key="frame" x="167.5" y="619" width="40" height="40"/>
-                                <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" alpha="0.20000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZE1-p2-Zw3">
+                                <rect key="frame" x="162.5" y="609" width="50" height="50"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ZE1-p2-Zw3" secondAttribute="height" multiplier="1:1" id="LFA-qd-LHS"/>
-                                    <constraint firstAttribute="width" constant="40" id="fGT-SB-JYI"/>
+                                    <constraint firstAttribute="width" constant="50" id="fGT-SB-JYI"/>
                                 </constraints>
                                 <connections>
                                     <action selector="locateButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N9j-55-Wfm"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WXL-1F-f1j">
+                                <rect key="frame" x="345" y="28" width="22" height="22"/>
+                                <connections>
+                                    <action selector="infoButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h55-W9-d1l"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQS-OL-4su">
+                                <rect key="frame" x="46.5" y="258.5" width="282" height="150"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZe-ye-MoY">
+                                        <rect key="frame" x="16" y="16" width="250" height="126"/>
+                                        <string key="text">Welcome to placigo. The app that is almost completely unrelated to the word placebo. To use placigo, make sure you have background location services enabled, travel, and watch placigo record the places you go!</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ah-0T-izP">
+                                        <rect key="frame" x="252" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="Kta-JB-rmx"/>
+                                            <constraint firstAttribute="height" constant="30" id="zbL-zE-qn0"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="18"/>
+                                        <state key="normal" title="x"/>
+                                        <connections>
+                                            <action selector="infoCloseButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tqD-UE-Ujn"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="oZe-ye-MoY" firstAttribute="leading" secondItem="aQS-OL-4su" secondAttribute="leading" constant="16" id="34T-jZ-wjP"/>
+                                    <constraint firstAttribute="bottom" secondItem="oZe-ye-MoY" secondAttribute="bottom" constant="8" id="3ZC-7D-Fyn"/>
+                                    <constraint firstAttribute="trailing" secondItem="4ah-0T-izP" secondAttribute="trailing" id="EEO-Qc-VoM"/>
+                                    <constraint firstAttribute="trailing" secondItem="oZe-ye-MoY" secondAttribute="trailing" constant="16" id="I2r-0o-Ho9"/>
+                                    <constraint firstItem="4ah-0T-izP" firstAttribute="top" secondItem="aQS-OL-4su" secondAttribute="top" id="Tes-1D-j0x"/>
+                                    <constraint firstItem="oZe-ye-MoY" firstAttribute="top" secondItem="aQS-OL-4su" secondAttribute="top" constant="16" id="Y11-qZ-k3N"/>
+                                    <constraint firstAttribute="height" constant="150" id="ySb-s1-jEp"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="WXL-1F-f1j" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="5Ca-iX-gdp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WXL-1F-f1j" secondAttribute="trailing" constant="8" id="72b-jL-8Jm"/>
                             <constraint firstItem="ZE1-p2-Zw3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="N5O-nR-AEp"/>
                             <constraint firstItem="pHX-Iv-Tka" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="PO3-iw-4fh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ZE1-p2-Zw3" secondAttribute="bottom" constant="8" id="RjL-ld-4nN"/>
                             <constraint firstItem="pHX-Iv-Tka" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="SGY-nR-GYv"/>
                             <constraint firstItem="pHX-Iv-Tka" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="ZBc-eS-rUM"/>
+                            <constraint firstItem="aQS-OL-4su" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="dTD-Mz-eHn"/>
                             <constraint firstItem="pHX-Iv-Tka" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="l1l-kL-whN"/>
+                            <constraint firstItem="aQS-OL-4su" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.75" constant="1" id="oz2-d3-SRe"/>
+                            <constraint firstItem="aQS-OL-4su" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wdb-Jl-33d"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="contentView" destination="pHX-Iv-Tka" id="iuv-lE-epa"/>
+                        <outlet property="infoView" destination="aQS-OL-4su" id="w7g-Tl-4S7"/>
                         <outlet property="locateButton" destination="ZE1-p2-Zw3" id="PaC-l6-5xp"/>
                     </connections>
                 </viewController>
