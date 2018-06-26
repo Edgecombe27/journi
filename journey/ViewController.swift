@@ -37,11 +37,12 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         userLocation = CLLocation(latitude: CLLocationDegrees(exactly: 0)!, longitude: CLLocationDegrees(exactly: 0)!)
         infoView.layer.cornerRadius = 10
         infoView.layer.masksToBounds = true
-        
+        infoView.isHidden = true
         if UserDefaults.standard.value(forKey: FIRST_TIME) != nil {
-            infoView.isHidden = true
+            
         } else {
-            infoView.isHidden = false
+            let alert = UIAlertController(title: "placigo", message: "Welcome to placigo. The app that is almost completely unrelated to the word placebo. To use placigo, make sure you have background location services enabled, travel, and watch placigo record the places you go!", preferredStyle: .alert)
+            self.present(alert, animated: true, completion: nil)
             UserDefaults.standard.set(true, forKey: FIRST_TIME)
         }
         
@@ -100,7 +101,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             locationManager.startUpdatingLocation()
             findingLocation = true
             locationManager.allowsBackgroundLocationUpdates = true
-            locationManager.startMonitoringVisits()
         }
     }
     
@@ -129,10 +129,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         if findingLocation {
             userLocation = locations[0] as CLLocation
             focusOnLocation(coordinates: userLocation.coordinate)
-            locationManager.stopUpdatingLocation()
             findingLocation = false
         } else {
-            //userData.addLocation(location: locations[0].coordinate)
+            userData.addLocation(location: locations[0].coordinate)
         }
     }
     
