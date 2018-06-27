@@ -15,7 +15,7 @@ class UserData {
     static let MONITORING_LOCATION_KEY = "monitoring_location"
 
     var data : [String : [String : Any]] = [:]
-    
+        
     var isTrackingLocation : Bool {
         get {
             if UserDefaults.standard.dictionary(forKey: UserData.MONITORING_LOCATION_KEY) != nil {
