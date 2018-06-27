@@ -37,12 +37,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         userLocation = CLLocation(latitude: CLLocationDegrees(exactly: 0)!, longitude: CLLocationDegrees(exactly: 0)!)
         infoView.layer.cornerRadius = 10
         infoView.layer.masksToBounds = true
-        infoView.isHidden = true
+        
         if UserDefaults.standard.value(forKey: FIRST_TIME) != nil {
-            
+            infoView.isHidden = true
         } else {
-            let alert = UIAlertController(title: "placigo", message: "Welcome to placigo. The app that is almost completely unrelated to the word placebo. To use placigo, make sure you have background location services enabled, travel, and watch placigo record the places you go!", preferredStyle: .alert)
-            self.present(alert, animated: true, completion: nil)
+            infoView.isHidden = false
             UserDefaults.standard.set(true, forKey: FIRST_TIME)
         }
         
@@ -60,6 +59,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         createMapView()
         userData = UserData()
         loadLocations()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -101,6 +101,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             locationManager.startUpdatingLocation()
             findingLocation = true
             locationManager.allowsBackgroundLocationUpdates = true
+            locationManager.startMonitoringVisits()
         }
     }
     
@@ -118,7 +119,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             annotationView!.annotation = annotation
         }
         
-        let pinImage = UIImage(named: "blue.png")
+        let pinImage = UIImage(named: "dot.png")
         annotationView!.image = pinImage
         
         return annotationView
@@ -130,6 +131,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             userLocation = locations[0] as CLLocation
             focusOnLocation(coordinates: userLocation.coordinate)
             findingLocation = false
+            locationManager.stopUpdatingLocation()
         } else {
             userData.addLocation(location: locations[0].coordinate)
         }
@@ -170,6 +172,25 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBAction func infoButtonPressed(_ sender: Any) {
         infoView.isHidden = !infoView.isHidden
     }
+    
+    @IBAction func deleteDataButtonPressed(_ sender: Any) {
+        
+        let alert = UIAlertController(title: "Delete Location Data", message: "Are you sure you want to delete your location data?", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Yes, destroy it", style: .destructive, handler: { (action) in
+            self.userData.deleteData()
+            self.mapView.removeAnnotations(self.mapView.annotations)
+            self.loadLocations()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Nevermind", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
+    
+    
     
     
     

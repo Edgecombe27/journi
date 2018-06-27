@@ -12,11 +12,11 @@ import CoreLocation
 class UserData {
     
     static let LOCATION_DATA_KEY = "location_data"
-    static let MONITORING_LOCATION_KEY = "user_data"
+    static let MONITORING_LOCATION_KEY = "monitoring_location"
 
     var data : [String : [String : Any]] = [:]
     
-    var isMonitoringLocation : Bool {
+    var isTrackingLocation : Bool {
         get {
             if UserDefaults.standard.dictionary(forKey: UserData.MONITORING_LOCATION_KEY) != nil {
                 return UserDefaults.standard.bool(forKey: UserData.MONITORING_LOCATION_KEY)
@@ -24,17 +24,23 @@ class UserData {
                 UserDefaults.standard.set(true, forKey: UserData.MONITORING_LOCATION_KEY)
                 return true
             }
+        } set {
+            UserDefaults.standard.set(newValue, forKey: UserData.MONITORING_LOCATION_KEY)
         }
     }
     
      init() {
         
+       fetchData()
+        
+    }
+    
+    func fetchData() {
         if UserDefaults.standard.dictionary(forKey: UserData.LOCATION_DATA_KEY) != nil {
             data = UserDefaults.standard.dictionary(forKey: UserData.LOCATION_DATA_KEY) as! [String : [String : Any]]
         } else {
             data = [:]
         }
-        
     }
     
     func addLocation(location : CLLocationCoordinate2D) {
