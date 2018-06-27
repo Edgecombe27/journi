@@ -133,7 +133,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             findingLocation = false
             locationManager.stopUpdatingLocation()
         } else {
-            userData.addLocation(location: locations[0].coordinate)
+            //userData.addLocation(location: locations[0].coordinate)
         }
     }
     
