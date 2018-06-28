@@ -131,6 +131,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             userLocation = locations[0] as CLLocation
             focusOnLocation(coordinates: userLocation.coordinate)
             findingLocation = false
+            userData.addLocation(location: locations[0].coordinate)
             locationManager.stopUpdatingLocation()
         } else {
             //userData.addLocation(location: locations[0].coordinate)
@@ -138,7 +139,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     func locationManager(_ manager: CLLocationManager, didVisit visit: CLVisit) {
-        userData.addLocation(location: userLocation.coordinate)
+        //userData.addLocation(location: userLocation.coordinate)
     }
     
         
